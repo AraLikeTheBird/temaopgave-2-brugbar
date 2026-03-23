@@ -232,7 +232,8 @@ export const GAME_CONFIG = {
         { x1: 101, y1: 115, x2: 119, y2: 124 }, //Continuing bottom of map (mid)
         { x1: 120, y1: 118, x2: 176, y2: 124 }, //Continuing bottom of map (right)
         { x1: 173, y1: 69, x2: 186, y2: 124 }, //Continuing map (whole of right side)
-
+        {x1:140, y1:106, x2:159, y2:113} // boss section, enterence top. work on gate,
+        // make one key stone sprite with action passable, surround by solids and a text about an invisibel wall blocking the way forward
     ],
 
     // Triggers are the main way to build gameplay.
