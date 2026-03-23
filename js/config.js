@@ -274,6 +274,25 @@ export const GAME_CONFIG = {
     // { kind: "teleport", targetX: 10, targetY: 4 }
     // { kind: "makePassable", passableSprite: null }
     triggers: [
+
+        {
+            id: "chestclosed 1",
+            type: "onInteractCell",
+            isSolid: true,
+            x: 60,
+            y: 62,
+            once: true,
+            sprite: "assets/sprites/pix chest closed.png",
+            actions:[
+                {kind: "playSound",
+                    soundKey: "pickup"
+                },
+                {kind:"playPlayerAnimation",
+                    animationKey: "exclamation",
+                    loops: 4,
+                }
+            ]
+        },
         {
             id: "coin_1",
             type: "onEnterCell",
