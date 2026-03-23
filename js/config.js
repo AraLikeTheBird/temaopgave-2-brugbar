@@ -15,13 +15,13 @@ export const GAME_CONFIG = {
     // Camera size is in pixels.
     // Smaller values feel more zoomed in.
     camera: {
-        widthPx: 320,
-        heightPx: 240,
+        widthPx: 600,
+        heightPx: 500,
     },
 
     // Player setup.
     player: {
-        startTile: { x: 1, y: 1 },
+        startTile: { x: 104, y: 30 },
         moveDurationMs: 150,
         defaultFacing: "down",
         spriteSheetSrc: "assets/player/player_sheet.png",
