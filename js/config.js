@@ -153,6 +153,16 @@ export const GAME_CONFIG = {
                 {kind:"playPlayerAnimation",
                     animationKey: "exclamation",
                     loops: 4,
+                },
+                {kind: "giveItem",
+                    itemKey: "Sword",
+                    amount: 1,
+                },
+                {kind: "openModalText",
+                    title: "Oh a sword!",
+                    text: "You found a hidden chest. Inside it is a sword. it has been added to your inventory. it might be useful at a later time",
+                    sprite: "assets/sprites/pix sword rapier.png"
+
                 }
             ]
         },
