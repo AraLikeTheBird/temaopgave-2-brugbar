@@ -137,7 +137,21 @@ export const GAME_CONFIG = {
     // { kind: "teleport", targetX: 10, targetY: 4 }
     // { kind: "makePassable", passableSprite: null }
     triggers: [
+        { id: "frog",
+            type: "onInteractCell",
+            isSolid: true,
+            x:165,
+            y:10,
+            sprite: {
+                src: "assets/sprites/frognpc.png",
+                frames: 4,
+                speed: 350,
+                tilesize: 32,
+            }
 
+
+
+        },
         {
             id: "chestclosed 1",
             type: "onInteractCell",
@@ -159,13 +173,29 @@ export const GAME_CONFIG = {
                     amount: 1,
                 },
                 {kind: "openModalText",
-                    title: "Oh a sword!",
-                    text: "You found a hidden chest. Inside it is a sword. it has been added to your inventory. it might be useful at a later time",
-                    sprite: "assets/sprites/pix sword rapier.png"
-
-                }
+                    title: "OH WOW!!",
+                    text: "You found a hidden chest. Inside it is a Rapier. it has been added to your inventory. it might be useful at a later time",
+                //snak med martin om hvodan man insætte en png i boxen
+                },
             ]
         },
+
+        {id: "looted chest 1", //ask martin how to move it under the trigger above
+        type: "onInteractCell",
+            isSolid: true,
+            x: 60,
+            y:62,
+            sprite: "assets/sprites/pix chest open.png",
+            actions: [
+                {kind: "openModalText",
+                    title: "Whoops",
+                    text: "it looks like you already looted this chest, try and find another one instead"
+        }
+
+            ]
+
+        },
+
         {
             id: "coin_1",
             type: "onEnterCell",
@@ -217,7 +247,7 @@ export const GAME_CONFIG = {
                 {
                     kind: "openModalHtml",
                     title: "Coin Sign",
-                    contentKey: "coin_sign",
+                    src: "asset/video/"
 
                 },
             ],
