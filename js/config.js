@@ -287,8 +287,6 @@ export const GAME_CONFIG = {
                 tilesize: 32,
             }
 
-
-
         },
         {
             id: "chestclosed 1",
