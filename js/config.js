@@ -331,7 +331,7 @@ export const GAME_CONFIG = {
             ],
             elseAction: {
                 kind: "openModalText",
-                title: "Oh no!!!",
+                title: "Oh no!!",
                 text: "This sign requires at least 2 coins. It says so in the 'conditions' for the trigger for this sign.",
             },
         },
