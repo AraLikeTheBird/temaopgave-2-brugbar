@@ -142,7 +142,7 @@ export const GAME_CONFIG = {
             type: "onEnterCell",
             x: 1,
             y: 2,
-            once: true,
+            once: false,
             sprite: "assets/sprites/coin.gif",
             actions: [
                 {
