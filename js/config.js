@@ -332,6 +332,24 @@ export const GAME_CONFIG = {
             ]
 
         },
+        {
+            id:"boss hitbox",
+            type: "onInteractCell",
+            isSolid: true,
+            x:167,
+            y:109,
+            actions: [
+                {
+                    kind: "playSound",
+                    soundKey: "damage",
+                },
+                {
+                    kind: "openModalText",
+                    title: "Boss",
+                    text: "you defeated the boss and won!",
+                }
+            ]
+        },
 
         {
             id: "coin_1",
