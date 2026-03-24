@@ -106,7 +106,7 @@ export const GAME_CONFIG = {
         //Portal in village
         { x1: 102, y1: 31, x2: 101, y2: 31 }, //Rocks by portal
         { x1: 101, y1: 30, x2: 101, y2: 29 }, //Rocks by portal
-        { x1: 102, y1: 29, x2: 109, y2: 29 }, //Rocks by portal
+        { x1: 102, y1: 29, x2: 108, y2: 29 }, //Rocks by portal
         { x1: 108, y1: 30, x2: 109, y2: 31 }, //Rocks by portal
         { x1: 108, y1: 32, x2: 105, y2: 23 }, //Rocks by portal
         //Top map
