@@ -57,8 +57,9 @@ export const GAME_CONFIG = {
             coin: 0,
         },
         stats: {
-            health: 3,
+            health: 5,
             strength: 1,
+            slug_health: 2,
         },
     },
 
@@ -456,7 +457,7 @@ export const GAME_CONFIG = {
                 {
                     kind: "openModalText",
                     title: "Hello there little friend",
-                    text: "Go back to where you came from.",
+                    text: "To find the key, go back to where you came from.",
                 },
             ]
         },
