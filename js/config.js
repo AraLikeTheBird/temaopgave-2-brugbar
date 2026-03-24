@@ -414,10 +414,31 @@ export const GAME_CONFIG = {
     // { kind: "makePassable", passableSprite: null }
     triggers: [
         //Mushroom girl
-        {   id: "mushroom-girl",
-            type: "onEnterCell",
+        {   id: "mushroom2",
+            type: "onInteractCell",
             x: 116,
             y: 24,
+            isSolid: true,
+            sprite: {
+                src: "assets/sprites/npc-mushroom-sheet.png",
+                frames: 4,
+                speed: 350,
+                tileSize: 32,
+            },
+            actions: [
+                {
+                    kind: "openModalText",
+                    title: "A clue to where you need to go",
+                    text: "Try going where there is water, streaming down th mountain",
+                },
+            ],
+        },
+        {   id: "mushroom1",
+            type: "onInteractCell",
+            x: 116,
+            y: 24,
+            once: true,
+            isSolid: true,
             sprite: { src: "assets/sprites/npc-mushroom-sheet.png",
                 frames: 4,
                 speed: 350,
@@ -432,47 +453,13 @@ export const GAME_CONFIG = {
             ],
         },
 
-        {   id: "mushroom-girl",
-            type: "onEnterCell",
-            x: 116,
-            y: 24,
-            actions: [
-                {
-                    kind: "openModalText",
-                    title: "A clue to where you need to go",
-                    text: "Try going where there is water, streaming down th mountain",
-                },
-            ],
-        },
-
         //swamp girl
-        { id: "swamp-girl",
-            type: "onEnterCell",
-            x: 19,
-            y: 35,
-            sprite: { src: "assets/sprites/npc-girl-sheet.png",
-                frames: 4,
-                speed: 350,
-                tileSize: 32
-            },
-            actions: [
-                {
-                   kind: "changeStat",
-                   statKey: "swamp_health",
-                   amount: -1,
-                },
-                {
-                  kind: "openModalText",
-                  title: "ouchy!",
-                  text: "Hit it on the head",
-                },
-            ],
-        },
         {
-            id: "Swamp_dead",
+            id: "Swamp-girl dead1",
             type: "onInteractCell",
             x: 19,
             y: 35,
+            isSolid: true,
             conditions: [
                 { scope: "stats", key: "Swamp_health", op: "<=", value: 0 },
             ],
@@ -493,6 +480,31 @@ export const GAME_CONFIG = {
                         "I am soft, i am round, in forest floors i am found... What am i??"
                 }
             ]
+        },
+        { id: "swamp-girl2",
+            type: "onEnterCell",
+            x: 19,
+            y: 35,
+            once: true,
+            isSolid: true,
+            sprite: {
+                src: "assets/sprites/npc-girl-sheet.png",
+                frames: 4,
+                speed: 350,
+                tileSize: 32
+            },
+            actions: [
+                {
+                    kind: "changeStat",
+                    statKey: "swamp_health",
+                    amount: -1,
+                },
+                {
+                    kind: "openModalText",
+                    title: "ouchy!",
+                    text: "Hit it on the head",
+                },
+            ],
         },
 
         //slug
