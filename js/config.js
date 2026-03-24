@@ -130,6 +130,14 @@ export const GAME_CONFIG = {
         { x1: 44, y1: 11, x2: 67, y2: 14 }, //Trees by swamp - closer
         { x1: 57, y1: 15, x2: 67, y2: 18 }, //trees by swamp - closer
         { x1: 68, y1: 0, x2: 94, y2: 8 }, //Trees a bit away from swamp
+        //Trees in the middle of the map (cluster 1)
+        { x1: 67, y1: 38, x2: 71, y2: 40 }, //up
+        { x1: 66, y1: 40, x2: 75, y2: 53 }, //Trees in the middle
+        { x1: 75, y1: 42, x2: 76, y2: 52 }, //Left side
+        { x1: 64, y1: 41, x2: 66, y2: 54 }, //Right side
+        { x1: 67, y1: 51, x2: 72, y2: 55 }, //Down
+        //(cluster 2)
+        { x1: 84, y1: 48, x2: 91, y2: 57 },
         //Waterfall
         { x1: 149, y1: 0, x2: 150, y2: 4 }, //Rock by waterfall
         { x1: 151, y1: 0, x2: 151, y2: 5 }, //Rock by waterfall
@@ -246,6 +254,45 @@ export const GAME_CONFIG = {
         { x1: 173, y1: 69, x2: 186, y2: 124 }, //Continuing map (whole of right side)
         {x1:140, y1:106, x2:159, y2:113}, // boss section, enterence top. work on gate,
         // make one key stone  sprite with action passable, surround by solids and a text about an invisibel wall blocking the way forward
+        { x1: 142, y1: 116, x2: 186, y2: 124 }, //continuing map (right side-bottom)
+        { x1: 25, y1: 99, x2: 28, y2: 101 }, //Water around portal
+        { x1: 23, y1: 99, x2: 25, y2: 99 }, //Water around portal
+        { x1: 15, y1: 98, x2: 10, y2: 99 }, //Water around portal
+        { x1: 14, y1: 101, x2: 10, y2: 101 }, //Water around portal
+        { x1: 10, y1: 102, x2: 14, y2: 102 }, //Water around portal
+        { x1: 11, y1: 103, x2: 14, y2: 103 }, //Water around portal
+        { x1: 13, y1: 104, x2: 26, y2: 104 }, //Water around portal
+        { x1: 15, y1: 105, x2: 25, y2: 105 }, //Water around portal
+        { x1: 132, y1: 104, x2: 137, y2: 104 }, //Rock by boss cave
+        { x1: 132, y1: 105, x2: 139, y2: 106 }, //Rock by boss cave
+        //The portal
+        { x1: 17, y1: 100, x2: 15, y2: 100 }, //Rocks by portal
+        { x1: 15, y1: 99, x2: 15, y2: 98 }, //Rocks by portal
+        { x1: 17, y1: 98, x2: 24, y2: 98 }, //Rocks by portal
+        { x1: 23, y1: 98, x2: 24, y2: 100 }, //Rocks by portal
+        { x1: 20, y1: 101, x2: 23, y2: 101 }, //Rocks by portal
+        { x1: 20, y1: 96, x2: 20, y2: 94 }, //Mushrooms around portal (Bottom yellow)
+        { x1: 17, y1: 90, x2: 20, y2: 92 }, //Mushrooms around portal (top yellow)
+        { x1: 10, y1: 98, x2: 10, y2: 93 }, //Mushrooms around portal (bottom purple)
+        { x1: 10, y1: 91, x2: 13, y2: 92 }, //Mushrooms around portal (top purple)
+        { x1: 6, y1: 103, x2: 6, y2: 99 }, //mushrooms around portal (bottom pink)
+        { x1: 4, y1: 96, x2: 7, y2: 99 }, //Mushrooms around portal (top pink)
+        { x1: 8, y1: 108, x2: 8, y2: 106 }, //Mushrooms around portal (bottom dark-pink)
+        { x1: 8, y1: 105, x2: 9, y2: 105 }, //Mushrooms around portal (top dark-pink)
+        { x1: 14, y1: 110, x2: 14, y2: 108 }, //Mushrooms around portal (bottom glow-yellow)
+        { x1: 13, y1: 106, x2: 14, y2: 107 }, //Mushrooms around portal (top glow-yellow)
+        { x1: 31, y1: 110, x2: 30, y2: 108 }, //Mushrooms around portal (bottom purple left)
+        { x1: 28, y1: 106, x2: 30, y2: 107 }, //Mushrooms around portal (top purple left)
+        { x1: 22, y1: 93, x2: 23, y2: 95 }, //Dice
+        //Boss cave (rocks + crystals)
+        { x1: 139, y1: 106, x2: 156, y2: 111 }, //big solid rock (right)
+        { x1: 139, y1: 112, x2: 147, y2: 112 }, //Big solid rock (bottom right)
+        { x1: 144, y1: 102, x2: 151, y2: 105 }, //Big solid rock (top right)
+        { x1: 151, y1: 95, x2: 161, y2: 105 }, //Big solid rock (middle)
+        { x1: 152, y1: 88, x2: 186, y2: 98 }, //Big solid rock (middle-left)
+        { x1: 158, y1: 117, x2: 186, y2: 125 }, //Big solid rock (middle bottom)
+        { x1: 164, y1: 114, x2: 174, y2: 124 }, //Big solid rock (middle bottom)
+
         { x1: 142, y1: 116, x2: 186, y2: 124 }, //continuing map (right side-bottom)
         { x1: 25, y1: 99, x2: 28, y2: 101 }, //Water around portal
         { x1: 23, y1: 99, x2: 25, y2: 99 }, //Water around portal
@@ -626,6 +673,155 @@ export const GAME_CONFIG = {
         },
 
 
+
+
+
+        {
+            id:"boss hitbox",
+            type: "onInteractCell",
+            isSolid: true,
+            x:167,
+            y:109,
+            actions: [
+                {
+                    kind: "playSound",
+                    soundKey: "damage",
+                },
+                {
+                    kind: "openModalText",
+                    title: "Boss",
+                    text: "you defeated the boss and won!",
+                }
+            ]
+        },
+        {id: "looted chest 1",
+            type: "onInteractCell",
+            isSolid: true,
+            x: 60,
+            y:62,
+            sprite: "assets/sprites/pix chest open.png",
+            actions: [
+                {
+                    kind: "playPlayerAnimation",
+                    animationKey: "angry",
+                    loops: 4,
+                },
+                {kind: "openModalText",
+                    title: "Whoops",
+                    text: "it looks like you already looted this chest, try and find another one instead"
+                }
+
+            ]
+
+        },
+        {
+            id: "chestclosed 1",
+            type: "onInteractCell",
+            isSolid: true,
+            x: 60,
+            y: 62,
+            once: true,
+            sprite: "assets/sprites/pix chest closed.png",
+            actions:[
+                {kind: "openModalText",
+                    title: "OH WOW!!",
+                    text: "You found a hidden chest. Inside it is a Rapier. it has been added to your inventory. it might be useful at a later time",
+                    //snak med martin om hvodan man indsætte en png i boxen
+                },
+                {kind: "playSound",
+                    soundKey: "pickup"
+                },
+                {kind:"playPlayerAnimation",
+                    animationKey: "exclamation",
+                    loops: 4,
+                },
+                {kind: "giveItem",
+                    itemKey: "Rapier",
+                    amount: 1,
+                },
+
+            ]
+        },
+
+
+        //slug
+        {
+            id: "slug",
+            type: "onInteractCell",
+            x: 168,
+            y: 65,
+            sprite: {
+                src: "assets/sprites/slugsheet.png",
+                frames: 4,
+                speed: 350,
+            },
+            actions: [
+                {
+                    kind: "changeStat",
+                    statKey: "slug_health",
+                    amount: -1,
+                },
+                {
+                    kind: "openModalText",
+                    title: "AHHHH!",
+                    text: "Hit it in the mushrooms!",
+                }
+            ]
+        },
+        {
+            id: "slug_dead",
+            type: "onInteractCell",
+            x: 168,
+            y: 65,
+            sprite: "assets/sprites/slugsheet.png",
+            conditions: [
+                { scope: "stats", key: "slug_health", op: "<=", value: 0 }
+            ],
+            actions: [
+                {
+                    kind: "makePassable",
+                    passableSprite: null,
+                },
+                {
+                    kind: "changeStat",
+                    statKey: "health",
+                    amount: -1
+                },
+                {
+                    kind: "openModalText",
+                    title: "Close to death... Defeated!!",
+                    text: "Here.. is your clue..." +
+                        "I stand tall and mighty, yet i never walk. I give shade and fruits but never talk.." +
+                        "What am i?"
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "Clue",
+                    amount: 1
+                }
+            ]
+        },
+
+
+        { id: "frog 2",
+            type: "onInteractCell",
+            isSolid: true,
+            x:165,
+            y:10,
+            sprite:
+                {
+                    src: "assets/sprites/frognpc.png",
+                    frames: 4,
+                    speed: 350,
+                    tilesize: 32,
+                },
+            actions: [
+                { kind: "openModalText",
+                    title: "Reed Hoppington",
+                    text: "i already gave you the note... please stop interrupting my fishing"
+                }
+            ]
+        },
         { id: "frog 2",
             type: "onInteractCell",
             isSolid: true,
