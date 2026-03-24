@@ -332,7 +332,7 @@ export const GAME_CONFIG = {
     // { kind: "teleport", targetX: 10, targetY: 4 }
     // { kind: "makePassable", passableSprite: null }
     triggers: [
-//Mushroom-girl
+        //Mushroom-girl
         {   id: "mushroom-girl",
             type: "onEnterCell",
             x: 116,
@@ -343,7 +343,7 @@ export const GAME_CONFIG = {
                 tileSize: 32,
             }
         },
-//Mushroom girl
+        //swamp girl
         { id: "swamp-girl",
             type: "onEnterCell",
             x: 19,
