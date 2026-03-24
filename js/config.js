@@ -496,73 +496,9 @@ export const GAME_CONFIG = {
         //tree
 
 
-        { id: "frog",
-            type: "onInteractCell",
-            isSolid: true,
-            x:165,
-            y:10,
-            sprite: {
-                src: "assets/sprites/frognpc.png",
-                frames: 4,
-                speed: 350,
-                tilesize: 32,
-            },
-            actions: [
-                {
-                    kind: "openModalText",
-                    title: "Reed Hoppington",
-                    text: "Oh hello, I didnt see you there. I was just too absorbed in fishing i suppose... oh you want to get out of this relm? well I guess i can help with that. You see i found this note that might be helpful.. It says 'We stand in the water on many legs, ",
 
 
-                }
 
-
-            ]
-
-        },
-        {
-            id: "chestclosed 1",
-            type: "onInteractCell",
-            isSolid: true,
-            x: 60,
-            y: 62,
-            once: true,
-            sprite: "assets/sprites/pix chest closed.png",
-            actions:[
-                {kind: "playSound",
-                    soundKey: "pickup"
-                },
-                {kind:"playPlayerAnimation",
-                    animationKey: "exclamation",
-                    loops: 4,
-                },
-                {kind: "giveItem",
-                    itemKey: "Sword",
-                    amount: 1,
-                },
-                {kind: "openModalText",
-                    title: "OH WOW!!",
-                    text: "You found a hidden chest. Inside it is a Rapier. it has been added to your inventory. it might be useful at a later time",
-                //snak med martin om hvodan man insætte en png i boxen
-                },
-            ]
-        },
-
-        {id: "looted chest 1", //ask martin how to move it under the trigger above
-        type: "onInteractCell",
-            isSolid: true,
-            x: 60,
-            y:62,
-            sprite: "assets/sprites/pix chest open.png",
-            actions: [
-                {kind: "openModalText",
-                    title: "Whoops",
-                    text: "it looks like you already looted this chest, try and find another one instead"
-        }
-
-            ]
-
-        },
         {
             id:"boss hitbox",
             type: "onInteractCell",
@@ -579,6 +515,54 @@ export const GAME_CONFIG = {
                     title: "Boss",
                     text: "you defeated the boss and won!",
                 }
+            ]
+        },
+        {id: "looted chest 1",
+            type: "onInteractCell",
+            isSolid: true,
+            x: 60,
+            y:62,
+            sprite: "assets/sprites/pix chest open.png",
+            actions: [
+                {
+                    kind: "playPlayerAnimation",
+                    animationKey: "angry",
+                    loops: 4,
+                },
+                {kind: "openModalText",
+                    title: "Whoops",
+                    text: "it looks like you already looted this chest, try and find another one instead"
+                }
+
+            ]
+
+        },
+        {
+            id: "chestclosed 1",
+            type: "onInteractCell",
+            isSolid: true,
+            x: 60,
+            y: 62,
+            once: true,
+            sprite: "assets/sprites/pix chest closed.png",
+            actions:[
+                {kind: "openModalText",
+                    title: "OH WOW!!",
+                    text: "You found a hidden chest. Inside it is a Rapier. it has been added to your inventory. it might be useful at a later time",
+                    //snak med martin om hvodan man indsætte en png i boxen
+                },
+                {kind: "playSound",
+                    soundKey: "pickup"
+                },
+                {kind:"playPlayerAnimation",
+                    animationKey: "exclamation",
+                    loops: 4,
+                },
+                {kind: "giveItem",
+                    itemKey: "Rapier",
+                    amount: 1,
+                },
+
             ]
         },
 
@@ -612,6 +596,7 @@ export const GAME_CONFIG = {
             type: "onInteractCell",
             x: 168,
             y: 65,
+            sprite: "assets/sprites/slugsheet.png",
             conditions: [
                 { scope: "stats", key: "slug_health", op: "<=", value: 0 }
             ],
@@ -631,36 +616,33 @@ export const GAME_CONFIG = {
                     text: "Here.. is your clue..." +
                         "I stand tall and mighty, yet i never walk. I give shade and fruits but never talk.." +
                         "What am i?"
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "Clue",
+                    amount: 1
                 }
             ]
         },
 
 
-        {
-            id: "chestclosed 1",
+        { id: "frog 2",
             type: "onInteractCell",
             isSolid: true,
-            x: 60,
-            y: 62,
-            once: true,
-            sprite: "assets/sprites/pix chest closed.png",
-            actions:[
-                {kind: "playSound",
-                    soundKey: "pickup"
+            x:165,
+            y:10,
+            sprite:
+                {
+                    src: "assets/sprites/frognpc.png",
+                    frames: 4,
+                    speed: 350,
+                    tilesize: 32,
                 },
-                {kind:"playPlayerAnimation",
-                    animationKey: "exclamation",
-                    loops: 4,
-                },
-                {kind: "giveItem",
-                    itemKey: "Sword",
-                    amount: 1,
-                },
-                {kind: "openModalText",
-                    title: "OH WOW!!",
-                    text: "You found a hidden chest. Inside it is a Rapier. it has been added to your inventory. it might be useful at a later time",
-                //snak med martin om hvodan man insætte en png i boxen
-                },
+            actions: [
+                { kind: "openModalText",
+                    title: "Reed Hoppington",
+                    text: "i already gave you the note... please stop interrupting my fishing"
+                }
             ]
         },
         { id: "frog",
@@ -692,23 +674,9 @@ export const GAME_CONFIG = {
 
             ]
         },
-         { id: "frog",
-            type: "onInteractCell",
-            isSolid: true,
-            x:165,
-            y:10,
-            sprite: {
-                src: "assets/sprites/frognpc.png",
-                frames: 4,
-                speed: 350,
-                tilesize: 32,},
-                actions: [
-                    { kind: "openModalText",
-                        title: "Reed Hoppington",
-                        text: "i already gave you the note... please stop interrupting my fishing"
-                    }
-                ]
-         },
+
+
+
 
         {id: "looted chest 1", //ask martin how to move it under the trigger above
         type: "onInteractCell",
@@ -724,6 +692,33 @@ export const GAME_CONFIG = {
 
             ]
 
+        },
+        {
+            id: "chestclosed 1",
+            type: "onInteractCell",
+            isSolid: true,
+            x: 60,
+            y: 62,
+            once: true,
+            sprite: "assets/sprites/pix chest closed.png",
+            actions:[
+                {kind: "playSound",
+                    soundKey: "pickup"
+                },
+                {kind:"playPlayerAnimation",
+                    animationKey: "exclamation",
+                    loops: 4,
+                },
+                {kind: "giveItem",
+                    itemKey: "Sword",
+                    amount: 1,
+                },
+                {kind: "openModalText",
+                    title: "OH WOW!!",
+                    text: "You found a hidden chest. Inside it is a Rapier. it has been added to your inventory. it might be useful at a later time",
+                    //snak med martin om hvodan man insætte en png i boxen
+                },
+            ]
         },
         {
             id:"boss hitbox",
