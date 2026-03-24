@@ -246,7 +246,7 @@ export const GAME_CONFIG = {
         { x1: 63, y1: 92, x2: 155, y2: 101 }, //Mountains going to boss cave
         { x1: 130, y1: 75, x2: 165, y2: 95 }, //Mountains and some mushrooms - with boss cave
         { x1: 163, y1: 72, x2: 186, y2: 97 }, // Mountains by boss cave
-        //Magical mushroom portal + boss cave
+        //Magical mushroom portal
         { x1: 0, y1: 94, x2: 4, y2: 124 }, //Far left side (bottom) of map
         { x1: 4, y1: 111, x2: 100, y2: 124 }, //Continuing bottom of map (left)
         { x1: 101, y1: 115, x2: 119, y2: 124 }, //Continuing bottom of map (mid)
@@ -332,6 +332,146 @@ export const GAME_CONFIG = {
     // { kind: "teleport", targetX: 10, targetY: 4 }
     // { kind: "makePassable", passableSprite: null }
     triggers: [
+
+        //slug
+        {
+            id: "slug",
+            type: "onInteractCell",
+            x: 168,
+            y: 65,
+            sprite: {
+                src: "assets/sprites/slugsheet.png",
+                frames: 4,
+                speed: 350,
+            },
+            actions: [
+                {
+                    kind: "changeStat",
+                    statKey: "slug_health",
+                    amount: -1,
+                },
+                {
+                    kind: "openModalText",
+                    title: "AHHHH!",
+                    text: "Hit it in the mushrooms!",
+                }
+            ]
+        },
+        {
+            id: "slug_dead",
+            type: "onInteractCell",
+            x: 168,
+            y: 65,
+            conditions: [
+                { scope: "stats", key: "slug_health", op: "<=", value: 0 }
+            ],
+            actions: [
+                {
+                    kind: "makePassable",
+                    passableSprite: null,
+                },
+                {
+                    kind: "changeStat",
+                    statKey: "health",
+                    amount: -1
+                },
+                {
+                    kind: "openModalText",
+                    title: "Close to death... Defeated!!",
+                    text: "Here.. is your clue..." +
+                        "I stand tall and mighty, yet i never walk. I give shade and fruits but never talk.." +
+                        "What am i?"
+                }
+            ]
+        },
+
+
+        { id: "frog",
+            type: "onInteractCell",
+            isSolid: true,
+            x:165,
+            y:10,
+            sprite: {
+                src: "assets/sprites/frognpc.png",
+                frames: 4,
+                speed: 350,
+                tilesize: 32,
+            },
+            actions: [
+                {
+                    kind: "openModalText",
+                    title: "Reed Hoppington",
+                    text: "Oh hello, I didnt see you there. I was just too absorbed in fishing i suppose... oh you want to get out of this relm? well I guess i can help with that. You see i found this note that might be helpful.. It says 'We stand in the water on many legs, ",
+
+
+                }
+
+
+            ]
+
+        },
+        {
+            id: "chestclosed 1",
+            type: "onInteractCell",
+            isSolid: true,
+            x: 60,
+            y: 62,
+            once: true,
+            sprite: "assets/sprites/pix chest closed.png",
+            actions:[
+                {kind: "playSound",
+                    soundKey: "pickup"
+                },
+                {kind:"playPlayerAnimation",
+                    animationKey: "exclamation",
+                    loops: 4,
+                },
+                {kind: "giveItem",
+                    itemKey: "Sword",
+                    amount: 1,
+                },
+                {kind: "openModalText",
+                    title: "OH WOW!!",
+                    text: "You found a hidden chest. Inside it is a Rapier. it has been added to your inventory. it might be useful at a later time",
+                //snak med martin om hvodan man insætte en png i boxen
+                },
+            ]
+        },
+
+        {id: "looted chest 1", //ask martin how to move it under the trigger above
+        type: "onInteractCell",
+            isSolid: true,
+            x: 60,
+            y:62,
+            sprite: "assets/sprites/pix chest open.png",
+            actions: [
+                {kind: "openModalText",
+                    title: "Whoops",
+                    text: "it looks like you already looted this chest, try and find another one instead"
+        }
+
+            ]
+
+        },
+        {
+            id:"boss hitbox",
+            type: "onInteractCell",
+            isSolid: true,
+            x:167,
+            y:109,
+            actions: [
+                {
+                    kind: "playSound",
+                    soundKey: "damage",
+                },
+                {
+                    kind: "openModalText",
+                    title: "Boss",
+                    text: "you defeated the boss and won!",
+                }
+            ]
+        },
+
         {
             id: "coin_1",
             type: "onEnterCell",
@@ -383,7 +523,7 @@ export const GAME_CONFIG = {
                 {
                     kind: "openModalHtml",
                     title: "Coin Sign",
-                    contentKey: "coin_sign",
+                    src: "asset/video/"
 
                 },
             ],
