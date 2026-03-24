@@ -446,6 +446,21 @@ export const GAME_CONFIG = {
             ]
         },
         //signs
+        //tree
+        {
+            id: "tree",
+            type: "onEnterCell",
+            x: 96,
+            y: 80,
+            actions: [
+                {
+                    kind: "openModalText",
+                    title: "Hello there little friend",
+                    text: "Go back to where you came from.",
+                },
+            ]
+        },
+        //tree
 
 
         { id: "frog",
