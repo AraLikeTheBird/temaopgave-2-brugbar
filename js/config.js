@@ -636,29 +636,6 @@ export const GAME_CONFIG = {
         },
 
 
-        { id: "frog",
-            type: "onInteractCell",
-            isSolid: true,
-            x:165,
-            y:10,
-            sprite: {
-                src: "assets/sprites/frognpc.png",
-                frames: 4,
-                speed: 350,
-                tilesize: 32,
-            },
-            actions: [
-                {
-                    kind: "openModalText",
-                    title: "Reed Hoppington",
-                    text: "Oh hello, I didnt see you there. I was just too absorbed in fishing i suppose... oh you want to get out of this relm? well I guess i can help with that. You see i found this note that might be helpful.. It says 'We stand in the water on many legs, yet our limbs stay dry. We do not travel ",
-
-
-                }
-
-
-            ]
-        },
         {
             id: "chestclosed 1",
             type: "onInteractCell",
@@ -686,6 +663,52 @@ export const GAME_CONFIG = {
                 },
             ]
         },
+        { id: "frog",
+            type: "onInteractCell",
+            isSolid: true,
+            once: true,
+            x:165,
+            y:10,
+            sprite: {
+                src: "assets/sprites/frognpc.png",
+                frames: 4,
+                speed: 350,
+                tilesize: 32,
+            },
+            actions: [
+                {kind: "giveItem",
+                    itemKey: "Clue",
+                    amount: 1
+                },
+                {
+                    kind: "playSound",
+                    soundKey: "pickup"
+                },
+                {
+                    kind: "openModalText",
+                    title: "Reed Hoppington",
+                    text: "Hi I didnt see you there... Oh you want to get out of this realm? I found this note that might be of help. It says 'We stand in the water on many legs yet our limbs stay dry. We do not travel far for the land comes to us. What are we?' I haven't got a clue what that means, but maybe you can use it for something. ",
+                },
+
+            ]
+        },
+         { id: "frog",
+            type: "onInteractCell",
+            isSolid: true,
+            x:165,
+            y:10,
+            sprite: {
+                src: "assets/sprites/frognpc.png",
+                frames: 4,
+                speed: 350,
+                tilesize: 32,},
+                actions: [
+                    { kind: "openModalText",
+                        title: "Reed Hoppington",
+                        text: "i already gave you the note... please stop interrupting my fishing"
+                    }
+                ]
+         },
 
         {id: "looted chest 1", //ask martin how to move it under the trigger above
         type: "onInteractCell",
