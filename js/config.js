@@ -6,7 +6,7 @@ export const GAME_CONFIG = {
 
     // Map size is counted in tiles, not pixels.
     map: {
-        imageSrc: "assets/map/map.png",
+        imageSrc: "assets/map/map.jpg",
         overlaySrc: "assets/map/map_overlay.png",
         widthTiles: 187,
         heightTiles: 125,
@@ -716,8 +716,8 @@ export const GAME_CONFIG = {
                 {kind: "openModalText",
                     title: "OH WOW!!",
                     text: "You found a hidden chest. Inside it is a Rapier. it has been added to your inventory. it might be useful at a later time",
-                    //snak med martin om hvodan man insætte en png i boxen
                 },
+
             ]
         },
         {
