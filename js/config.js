@@ -370,6 +370,7 @@ export const GAME_CONFIG = {
         { x1: 152, y1: 88, x2: 186, y2: 98 }, //Big solid rock (middle-left)
         { x1: 158, y1: 117, x2: 186, y2: 125 }, //Big solid rock (middle bottom)
         { x1: 164, y1: 114, x2: 174, y2: 124 }, //Big solid rock (middle bottom)
+        {x1:16, y1: 102, x2:25, y2: 102}, // portal b water
 
     ],
 
@@ -536,7 +537,7 @@ export const GAME_CONFIG = {
                 {
                     kind: "openModalText",
                     title: "Hello there little friend",
-                    text: "Go back to where you came from.",
+                    text: "Take the key and go back to where you started.",
                 },
             ]
         },
@@ -562,6 +563,54 @@ export const GAME_CONFIG = {
                     title: "Boss",
                     text: "you defeated the boss and won!",
                 }
+            ]
+        },
+
+        {id: "looted chest 2",
+            type: "onInteractCell",
+            isSolid: true,
+            x: 70,
+            y:17,
+            sprite: "assets/sprites/pix chest open.png",
+            actions: [
+                {
+                    kind: "playPlayerAnimation",
+                    animationKey: "angry",
+                    loops: 4,
+                },
+                {kind: "openModalText",
+                    title: "Whoops",
+                    text: "it looks like you already looted this chest, try and find another one instead"
+                }
+
+            ]
+
+        },
+        {
+            id: "chestclosed 2",
+            type: "onInteractCell",
+            isSolid: true,
+            x: 70,
+            y: 17,
+            once: true,
+            sprite: "assets/sprites/pix chest closed.png",
+            actions:[
+                {kind: "openModalHtml",
+                    contentKey: "hammer"
+
+                },
+                {kind: "playSound",
+                    soundKey: "pickup"
+                },
+                {kind:"playPlayerAnimation",
+                    animationKey: "exclamation",
+                    loops: 4,
+                },
+                {kind: "giveItem",
+                    itemKey: "Hammer",
+                    amount: 1,
+                },
+
             ]
         },
         {id: "looted chest 1",
