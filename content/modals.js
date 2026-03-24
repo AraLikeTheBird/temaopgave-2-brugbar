@@ -132,17 +132,55 @@ export const MODAL_CONTENT = {
         videoType: "video/mp4",
         description: "behold the boss cave",
     },
-    chest: {
+    rapier: {
         title: "Treassure Chest",
-        maxWidth: "90vw",
-        maxHeight: "90vh",
+        maxWidth: "500px",
+        maxHeight: "100vh",
         html: `
-            <article class="Rapier">
+            <article class="chest">
             <h1> OH WOW </h1>
             <a> <img src="assets/sprites/pix sword rapier.png" alt="a classic rapier, but in more trippy colours" style=" height:64px;width:64px"> </a>
                 <p></p>
                <p> "You found a hidden chest. Inside it is a Rapier. it has been added to your inventory. it might be useful at a later time" </p>
-
+            </article>
+        `,
+    },
+    hammer: {
+        title: "Treassure Chest",
+        maxWidth: "500px",
+        maxHeight: "100vh",
+        html: `
+            <article class="chest">
+            <h1> OH WOW </h1>
+            <a> <img src="assets/sprites/pix sword rapier.png" alt="a classic mallet, but in more trippy colours" style=" height:64px;width:64px"> </a>
+                <p></p>
+               <p> "You found a hidden chest. Inside it is a Hammer. it has been added to your inventory. it might be useful at a later time" </p>
+            </article>
+        `,
+    },
+    axe: {
+        title: "Treassure Chest",
+        maxWidth: "500px",
+        maxHeight: "100vh",
+        html: `
+            <article class="chest">
+            <h1> OH WOW </h1>
+            <a> <img src="assets/sprites/pix sword rapier.png" alt="an axe, but in more trippy colours" style=" height:64px;width:64px"> </a>
+                <p></p>
+               <p> "You found a hidden chest. Inside it is an Axe. it has been added to your inventory. it might be useful at a later time" </p>
+            </article>
+        `,
+    },
+    crystalsword: {
+        title: "Treassure Chest",
+        maxWidth: "500px",
+        maxHeight: "100vh",
+        html: `
+            <article class="chest">
+            <h1> OH WOW </h1>
+            <a> <img src="assets/sprites/pix crystal sword.png" alt="a crystal sword, its purple with gold and green accents" style=" height:64px;width:64px"> </a>
+                <p></p>
+               <p> "You found a hidden chest. Inside it is a Crystal. it has been added to your inventory. it might be useful at a later time" </p>
             </article>
         `,
     },

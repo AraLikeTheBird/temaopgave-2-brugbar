@@ -72,12 +72,11 @@
     color: #20392d;
 }
 .chest {
-    display: inline-block;
-    margin: 0;
-    padding: 0.15rem 0.45rem;
-    border-radius: var(--radius-sm);
-    background: #dceade;
-    color: #1c3428;
-    font-size: 0.75rem;
-    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: anchor-center;
+
+    width: 350px;
+    position: relative;
+
 }

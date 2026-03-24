@@ -595,7 +595,7 @@ export const GAME_CONFIG = {
             sprite: "assets/sprites/pix chest closed.png",
             actions:[
                 {kind: "openModalHtml",
-                    contentKey: "village_sign1"
+                    contentKey: "rapier"
 
                 },
                 {kind: "playSound",
