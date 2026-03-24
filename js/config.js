@@ -21,7 +21,7 @@ export const GAME_CONFIG = {
 
     // Player setup.
     player: {
-        startTile: { x: 104, y: 30 },
+        startTile: { x: 104, y:30},
         moveDurationMs: 150,
         defaultFacing: "down",
         spriteSheetSrc: "assets/player/player_sheet.png",
@@ -232,7 +232,6 @@ export const GAME_CONFIG = {
         { x1: 101, y1: 115, x2: 119, y2: 124 }, //Continuing bottom of map (mid)
         { x1: 120, y1: 118, x2: 176, y2: 124 }, //Continuing bottom of map (right)
         { x1: 173, y1: 69, x2: 186, y2: 124 }, //Continuing map (whole of right side)
-        {x1:140, y1:106, x2:159, y2:113} // boss section, enterence top. work on gate,
         // make one key stone  sprite with action passable, surround by solids and a text about an invisibel wall blocking the way forward
     ],
 
@@ -275,6 +274,60 @@ export const GAME_CONFIG = {
     // { kind: "teleport", targetX: 10, targetY: 4 }
     // { kind: "makePassable", passableSprite: null }
     triggers: [
+
+        //slug
+        {
+            id: "slug",
+            type: "onInteractCell",
+            x: 168,
+            y: 65,
+            sprite: {
+                src: "assets/sprites/slugsheet.png",
+                frames: 4,
+                speed: 350,
+            },
+            actions: [
+                {
+                    kind: "changeStat",
+                    statKey: "slug_health",
+                    amount: -1,
+                },
+                {
+                    kind: "openModalText",
+                    title: "AHHHH!",
+                    text: "Hit it in the mushrooms!",
+                }
+            ]
+        },
+        {
+            id: "slug_dead",
+            type: "onInteractCell",
+            x: 168,
+            y: 65,
+            conditions: [
+                { scope: "stats", key: "slug_health", op: "<=", value: 0 }
+            ],
+            actions: [
+                {
+                    kind: "makePassable",
+                    passableSprite: null,
+                },
+                {
+                    kind: "changeStat",
+                    statKey: "health",
+                    amount: -1
+                },
+                {
+                    kind: "openModalText",
+                    title: "Close to death... Defeated!!",
+                    text: "Here.. is your clue..." +
+                        "I stand tall and mighty, yet i never walk. I give shade and fruits but never talk.." +
+                        "What am i?"
+                }
+            ]
+        },
+
+
         { id: "frog",
             type: "onInteractCell",
             isSolid: true,
@@ -285,9 +338,18 @@ export const GAME_CONFIG = {
                 frames: 4,
                 speed: 350,
                 tilesize: 32,
-            }
+            },
+            actions: [
+                {
+                    kind: "openModalText",
+                    title: "Reed Hoppington",
+                    text: "Oh hello, I didnt see you there. I was just too absorbed in fishing i suppose... oh you want to get out of this relm? well I guess i can help with that. You see i found this note that might be helpful.. It says 'We stand in the water on many legs, ",
 
 
+                }
+
+
+            ]
 
         },
         {
