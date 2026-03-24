@@ -332,7 +332,7 @@ export const GAME_CONFIG = {
     // { kind: "teleport", targetX: 10, targetY: 4 }
     // { kind: "makePassable", passableSprite: null }
     triggers: [
-        //Mushroom-girl
+        //Mushroom girl
         {   id: "mushroom-girl",
             type: "onEnterCell",
             x: 116,
@@ -345,16 +345,25 @@ export const GAME_CONFIG = {
             actions: [
                 {
                     kind:"openModalText",
-                    title: "Here is a clue, where to go next!",
+                    title: "Here is a clue!!",
                     text: "What belongs to you, but others use it more than you do?",
-                },
-                {
-                    kind: "openModalText",
-                    title: "A clue to where you need to go",
-                    text: "Try going where there is water, streaming down th mountain"
                 },
             ],
         },
+
+        {   id: "mushroom-girl",
+            type: "onEnterCell",
+            x: 116,
+            y: 24,
+            actions: [
+                {
+                    kind: "openModalText",
+                    title: "A clue to where you need to go",
+                    text: "Try going where there is water, streaming down th mountain",
+                },
+            ],
+        },
+
         //swamp girl
         { id: "swamp-girl",
             type: "onEnterCell",
