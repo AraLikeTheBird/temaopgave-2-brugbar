@@ -152,9 +152,9 @@ export const MODAL_CONTENT = {
         html: `
             <article class="chest">
             <h1> OH WOW </h1>
-            <a> <img src="assets/sprites/pix sword rapier.png" alt="a classic mallet, but in more trippy colours" style=" height:64px;width:64px"> </a>
+            <a> <img src="assets/sprites/pix hammer.png" alt="a classic mallet, but in more trippy colours" style=" height:64px;width:64px"> </a>
                 <p></p>
-               <p> "You found a hidden chest. Inside it is a Hammer. it has been added to your inventory. it might be useful at a later time" </p>
+               <p> "You found a hidden chest. Inside it is a Hammer. It has been added to your inventory. it might be useful at a later time" </p>
             </article>
         `,
     },
@@ -167,7 +167,7 @@ export const MODAL_CONTENT = {
             <h1> OH WOW </h1>
             <a> <img src="assets/sprites/pix sword rapier.png" alt="an axe, but in more trippy colours" style=" height:64px;width:64px"> </a>
                 <p></p>
-               <p> "You found a hidden chest. Inside it is an Axe. it has been added to your inventory. it might be useful at a later time" </p>
+               <p> "You found a hidden chest. Inside it is an Axe. It has been added to your inventory. it might be useful at a later time" </p>
             </article>
         `,
     },
@@ -180,7 +180,7 @@ export const MODAL_CONTENT = {
             <h1> OH WOW </h1>
             <a> <img src="assets/sprites/pix crystal sword.png" alt="a crystal sword, its purple with gold and green accents" style=" height:64px;width:64px"> </a>
                 <p></p>
-               <p> "You found a hidden chest. Inside it is a Crystal. it has been added to your inventory. it might be useful at a later time" </p>
+               <p> "You found a hidden chest. Inside it is a Crystal Sword. It has been added to your inventory. it might be useful at a later time" </p>
             </article>
         `,
     },
