@@ -132,4 +132,18 @@ export const MODAL_CONTENT = {
         videoType: "video/mp4",
         description: "behold the boss cave",
     },
+    chest: {
+        title: "Treassure Chest",
+        maxWidth: "90vw",
+        maxHeight: "90vh",
+        html: `
+            <article class="Rapier">
+            <h1> OH WOW </h1>
+            <a> <img src="assets/sprites/pix sword rapier.png" alt="a classic rapier, but in more trippy colours" style=" height:64px;width:64px"> </a>
+                <p></p>
+               <p> "You found a hidden chest. Inside it is a Rapier. it has been added to your inventory. it might be useful at a later time" </p>
+
+            </article>
+        `,
+    },
 };

@@ -593,10 +593,9 @@ export const GAME_CONFIG = {
             once: true,
             sprite: "assets/sprites/pix chest closed.png",
             actions:[
-                {kind: "openModalText",
-                    title: "OH WOW!!",
-                    text: "You found a hidden chest. Inside it is a Rapier. it has been added to your inventory. it might be useful at a later time",
-                    //snak med martin om hvodan man indsætte en png i boxen
+                {kind: "openModalHtml",
+                    contentKey: "village_sign1"
+
                 },
                 {kind: "playSound",
                     soundKey: "pickup"
