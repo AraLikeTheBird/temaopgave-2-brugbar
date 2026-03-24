@@ -326,6 +326,68 @@ export const GAME_CONFIG = {
                 }
             ]
         },
+        //signs
+        {
+            id: "vandfald_sign",
+            type: "onInteractCell",
+            x: 126,
+            y: 27,
+            isSolid: true,
+            sprite: "assets/sprites/sign 1.png",
+            actions: [
+                {
+                    kind: "openModalText",
+                    title: "Crystal Falls this way",
+                    text: "Follow the water.. obviously",
+                },
+            ]
+        },
+        {
+            id: "forest_sign",
+            type: "onInteractCell",
+            x: 98,
+            y: 57,
+            isSolid: true,
+            sprite: "assets/sprites/sign 3.png",
+            actions: [
+                {
+                    kind: "openModalText",
+                    title: "Mushroom Grove this way",
+                    text: "Follow the road over the bridge.",
+                },
+            ]
+        },
+        {
+            id: "mangrove_sign",
+            type: "onInteractCell",
+            x: 82,
+            y: 41,
+            isSolid: true,
+            sprite: "assets/sprites/sign 4.png",
+            actions: [
+                {
+                    kind: "openModalText",
+                    title: "Crystal Mangrove this way",
+                    text: "Follow the road.",
+                },
+            ]
+        },
+        {
+            id: "tree_sign",
+            type: "onInteractCell",
+            x: 94,
+            y: 57,
+            isSolid: true,
+            sprite: "assets/sprites/sign 2.png",
+            actions: [
+                {
+                    kind: "openModalText",
+                    title: "This way is a dead end",
+                    text: "Follow the road.",
+                },
+            ]
+        },
+        //signs
 
 
         { id: "frog",
