@@ -414,100 +414,6 @@ export const GAME_CONFIG = {
     // { kind: "teleport", targetX: 10, targetY: 4 }
     // { kind: "makePassable", passableSprite: null }
     triggers: [
-        //Mushroom girl
-        {   id: "mushroom2",
-            type: "onInteractCell",
-            x: 116,
-            y: 24,
-            isSolid: true,
-            sprite: {
-                src: "assets/sprites/npc-mushroom-sheet.png",
-                frames: 4,
-                speed: 350,
-                tileSize: 32,
-            },
-            actions: [
-                {
-                    kind: "openModalText",
-                    title: "A clue to where you need to go",
-                    text: "Try going where there is water, streaming down th mountain",
-                },
-            ],
-        },
-        {   id: "mushroom1",
-            type: "onInteractCell",
-            x: 116,
-            y: 24,
-            once: true,
-            isSolid: true,
-            sprite: { src: "assets/sprites/npc-mushroom-sheet.png",
-                frames: 4,
-                speed: 350,
-                tileSize: 32,
-            },
-            actions: [
-                {
-                    kind:"openModalText",
-                    title: "Here is a clue!!",
-                    text: "What belongs to you, but others use it more than you do?",
-                },
-            ],
-        },
-
-        //swamp girl
-        {
-            id: "Swamp-girl dead1",
-            type: "onInteractCell",
-            x: 19,
-            y: 35,
-            isSolid: true,
-            conditions: [
-                { scope: "stats", key: "Swamp_health", op: "<=", value: 0 },
-            ],
-            actions: [
-                {
-                    kind: "makePassable",
-                    passableSprite: null,
-                },
-                {
-                    kind: "changeStat",
-                    statKey: "health",
-                    amount: -1
-                },
-                {
-                    kind: "openModalText",
-                    title: "ARGH! almost dead",
-                    text: "Here.. is your clue..." +
-                        "I am soft, i am round, in forest floors i am found... What am i??"
-                }
-            ]
-        },
-        { id: "swamp-girl2",
-            type: "onEnterCell",
-            x: 19,
-            y: 35,
-            once: true,
-            isSolid: true,
-            sprite: {
-                src: "assets/sprites/npc-girl-sheet.png",
-                frames: 4,
-                speed: 350,
-                tileSize: 32
-            },
-            actions: [
-                {
-                    kind: "changeStat",
-                    statKey: "swamp_health",
-                    amount: -1,
-                },
-                {
-                    kind: "openModalText",
-                    title: "ouchy!",
-                    text: "Hit it on the head",
-                },
-            ],
-        },
-
         //chests
         {id: "looted chest 2",
             type: "onInteractCell",
@@ -665,6 +571,7 @@ export const GAME_CONFIG = {
         },
         //signs
         //tree
+        //tree
         {
             id: "tree",
             type: "onEnterCell",
@@ -678,234 +585,7 @@ export const GAME_CONFIG = {
                 },
             ]
         },
-        //tree
-        {
-            id:"boss hitbox",
-            type: "onInteractCell",
-            isSolid: true,
-            x:167,
-            y:109,
-            actions: [
-                {
-                    kind: "playSound",
-                    soundKey: "damage",
-                },
-                {
-                    kind: "openModalText",
-                    title: "Boss",
-                    text: "you defeated the boss and won!",
-                }
-            ]
-        },
                         //NPC
-        //slug
-        {
-            id: "slug",
-            type: "onInteractCell",
-            x: 168,
-            y: 65,
-            sprite: {
-                src: "assets/sprites/slugsheet.png",
-                frames: 4,
-                speed: 350,
-            },
-            actions: [
-                {
-                    kind: "changeStat",
-                    statKey: "slug_health",
-                    amount: -1,
-                },
-                {
-                    kind: "openModalText",
-                    title: "AHHHH!",
-                    text: "Hit it in the mushrooms!",
-                }
-            ]
-        },
-        {
-            id: "slug_dead",
-            type: "onInteractCell",
-            x: 168,
-            y: 65,
-            sprite: "assets/sprites/slugsheet.png",
-            conditions: [
-                { scope: "stats", key: "slug_health", op: "<=", value: 0 }
-            ],
-            actions: [
-                {
-                    kind: "makePassable",
-                    passableSprite: null,
-                },
-                {
-                    kind: "changeStat",
-                    statKey: "health",
-                    amount: -1
-                },
-                {
-                    kind: "openModalText",
-                    title: "Close to death... Defeated!!",
-                    text: "Here.. is your clue..." +
-                        "I stand tall and mighty, yet i never walk. I give shade and fruits but never talk.." +
-                        "What am i?"
-                },
-                {
-                    kind: "giveItem",
-                    itemKey: "Clue",
-                    amount: 1
-                }
-            ]
-        },
-
-
-
-
-
-        {
-            id:"boss hitbox",
-            type: "onInteractCell",
-            isSolid: true,
-            x:167,
-            y:109,
-            actions: [
-                {
-                    kind: "playSound",
-                    soundKey: "damage",
-                },
-                {
-                    kind: "openModalText",
-                    title: "Boss",
-                    text: "you defeated the boss and won!",
-                }
-            ]
-        },
-        {id: "looted chest 1",
-            type: "onInteractCell",
-            isSolid: true,
-            x: 60,
-            y:62,
-            sprite: "assets/sprites/pix chest open.png",
-            actions: [
-                {
-                    kind: "playPlayerAnimation",
-                    animationKey: "angry",
-                    loops: 4,
-                },
-                {kind: "openModalText",
-                    title: "Whoops",
-                    text: "it looks like you already looted this chest, try and find another one instead"
-                }
-
-            ]
-
-        },
-        {
-            id: "chestclosed 1",
-            type: "onInteractCell",
-            isSolid: true,
-            x: 60,
-            y: 62,
-            once: true,
-            sprite: "assets/sprites/pix chest closed.png",
-            actions:[
-                {kind: "openModalText",
-                    title: "OH WOW!!",
-                    text: "You found a hidden chest. Inside it is a Rapier. it has been added to your inventory. it might be useful at a later time",
-                    //snak med martin om hvodan man indsætte en png i boxen
-                },
-                {kind: "playSound",
-                    soundKey: "pickup"
-                },
-                {kind:"playPlayerAnimation",
-                    animationKey: "exclamation",
-                    loops: 4,
-                },
-                {kind: "giveItem",
-                    itemKey: "Rapier",
-                    amount: 1,
-                },
-
-            ]
-        },
-
-
-        //slug
-        {
-            id: "slug",
-            type: "onInteractCell",
-            x: 168,
-            y: 65,
-            sprite: {
-                src: "assets/sprites/slugsheet.png",
-                frames: 4,
-                speed: 350,
-            },
-            actions: [
-                {
-                    kind: "changeStat",
-                    statKey: "slug_health",
-                    amount: -1,
-                },
-                {
-                    kind: "openModalText",
-                    title: "AHHHH!",
-                    text: "Hit it in the mushrooms!",
-                }
-            ]
-        },
-        {
-            id: "slug_dead",
-            type: "onInteractCell",
-            x: 168,
-            y: 65,
-            sprite: "assets/sprites/slugsheet.png",
-            conditions: [
-                { scope: "stats", key: "slug_health", op: "<=", value: 0 }
-            ],
-            actions: [
-                {
-                    kind: "makePassable",
-                    passableSprite: null,
-                },
-                {
-                    kind: "changeStat",
-                    statKey: "health",
-                    amount: -1
-                },
-                {
-                    kind: "openModalText",
-                    title: "Close to death... Defeated!!",
-                    text: "Here.. is your clue..." +
-                        "I stand tall and mighty, yet i never walk. I give shade and fruits but never talk.." +
-                        "What am i?"
-                },
-                {
-                    kind: "giveItem",
-                    itemKey: "Clue",
-                    amount: 1
-                }
-            ]
-        },
-
-
-        { id: "frog 2",
-            type: "onInteractCell",
-            isSolid: true,
-            x:165,
-            y:10,
-            sprite:
-                {
-                    src: "assets/sprites/frognpc.png",
-                    frames: 4,
-                    speed: 350,
-                    tilesize: 32,
-                },
-            actions: [
-                { kind: "openModalText",
-                    title: "Reed Hoppington",
-                    text: "i already gave you the note... please stop interrupting my fishing"
-                }
-            ]
-        },
         { id: "frog 2",
             type: "onInteractCell",
             isSolid: true,
@@ -954,50 +634,153 @@ export const GAME_CONFIG = {
 
             ]
         },
-
-
-
-
-        {id: "looted chest 1", //ask martin how to move it under the trigger above
-        type: "onInteractCell",
+        //Mushroom girl
+        {   id: "mushroom2",
+            type: "onInteractCell",
+            x: 116,
+            y: 24,
             isSolid: true,
-            x: 60,
-            y:62,
-            sprite: "assets/sprites/pix chest open.png",
+            sprite: {
+                src: "assets/sprites/npc-mushroom-sheet.png",
+                frames: 4,
+                speed: 350,
+                tileSize: 32,
+            },
             actions: [
-                {kind: "openModalText",
-                    title: "Whoops",
-                    text: "it looks like you already looted this chest, try and find another one instead"
-        }
-
+                {
+                    kind: "openModalText",
+                    title: "A clue to where you need to go",
+                    text: "Try going where there is water, streaming down th mountain",
+                },
+            ],
+        },
+        {   id: "mushroom1",
+            type: "onInteractCell",
+            x: 116,
+            y: 24,
+            once: true,
+            isSolid: true,
+            sprite: { src: "assets/sprites/npc-mushroom-sheet.png",
+                frames: 4,
+                speed: 350,
+                tileSize: 32,
+            },
+            actions: [
+                {
+                    kind:"openModalText",
+                    title: "Here is a clue!!",
+                    text: "What belongs to you, but others use it more than you do?",
+                },
+            ],
+        },
+        //swamp girl
+        {
+            id: "Swamp-girl dead1",
+            type: "onInteractCell",
+            x: 19,
+            y: 35,
+            isSolid: true,
+            conditions: [
+                { scope: "stats", key: "Swamp_health", op: "<=", value: 0 },
+            ],
+            actions: [
+                {
+                    kind: "makePassable",
+                    passableSprite: null,
+                },
+                {
+                    kind: "changeStat",
+                    statKey: "health",
+                    amount: -1
+                },
+                {
+                    kind: "openModalText",
+                    title: "ARGH! almost dead",
+                    text: "Here.. is your clue..." +
+                        "I am soft, i am round, in forest floors i am found... What am i??"
+                }
             ]
-
+        },
+        { id: "swamp-girl2",
+            type: "onEnterCell",
+            x: 19,
+            y: 35,
+            once: true,
+            isSolid: true,
+            sprite: {
+                src: "assets/sprites/npc-girl-sheet.png",
+                frames: 4,
+                speed: 350,
+                tileSize: 32
+            },
+            actions: [
+                {
+                    kind: "changeStat",
+                    statKey: "swamp_health",
+                    amount: -1,
+                },
+                {
+                    kind: "openModalText",
+                    title: "ouchy!",
+                    text: "Hit it on the head",
+                },
+            ],
+        },
+        //slug
+        {
+            id: "slug",
+            type: "onInteractCell",
+            x: 168,
+            y: 65,
+            sprite: {
+                src: "assets/sprites/slugsheet.png",
+                frames: 4,
+                speed: 350,
+            },
+            actions: [
+                {
+                    kind: "changeStat",
+                    statKey: "slug_health",
+                    amount: -1,
+                },
+                {
+                    kind: "openModalText",
+                    title: "AHHHH!",
+                    text: "Hit it in the mushrooms!",
+                }
+            ]
         },
         {
-            id: "chestclosed 1",
+            id: "slug_dead",
             type: "onInteractCell",
-            isSolid: true,
-            x: 60,
-            y: 62,
-            once: true,
-            sprite: "assets/sprites/pix chest closed.png",
-            actions:[
-                {kind: "playSound",
-                    soundKey: "pickup"
+            x: 168,
+            y: 65,
+            sprite: "assets/sprites/slugsheet.png",
+            conditions: [
+                { scope: "stats", key: "slug_health", op: "<=", value: 0 }
+            ],
+            actions: [
+                {
+                    kind: "makePassable",
+                    passableSprite: null,
                 },
-                {kind:"playPlayerAnimation",
-                    animationKey: "exclamation",
-                    loops: 4,
+                {
+                    kind: "changeStat",
+                    statKey: "health",
+                    amount: -1
                 },
-                {kind: "giveItem",
-                    itemKey: "Sword",
-                    amount: 1,
+                {
+                    kind: "openModalText",
+                    title: "Close to death... Defeated!!",
+                    text: "Here.. is your clue..." +
+                        "I stand tall and mighty, yet i never walk. I give shade and fruits but never talk.." +
+                        "What am i?"
                 },
-                {kind: "openModalText",
-                    title: "OH WOW!!",
-                    text: "You found a hidden chest. Inside it is a Rapier. it has been added to your inventory. it might be useful at a later time",
-                },
-
+                {
+                    kind: "giveItem",
+                    itemKey: "Clue",
+                    amount: 1
+                }
             ]
         },
         {
@@ -1018,6 +801,7 @@ export const GAME_CONFIG = {
                 }
             ]
         },
+
 
         {
             id: "coin_1",
