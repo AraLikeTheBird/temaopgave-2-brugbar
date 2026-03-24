@@ -21,7 +21,7 @@ export const GAME_CONFIG = {
 
     // Player setup.
     player: {
-        startTile: { x: 104, y:30},
+        startTile: { x: 104, y: 30 },
         moveDurationMs: 150,
         defaultFacing: "down",
         spriteSheetSrc: "assets/player/player_sheet.png",
@@ -102,6 +102,12 @@ export const GAME_CONFIG = {
         { x1: 81, y1: 9, x2: 84, y2: 18 }, //trees by houses (left)
         { x1: 80, y1: 20, x2: 87, y2: 24 }, //trees by houses (left)
         { x1: 129, y1: 30, x2: 136, y2: 49 }, //trees just by village (circle)
+        //Portal in village
+        { x1: 102, y1: 31, x2: 101, y2: 31 }, //Rocks by portal
+        { x1: 101, y1: 30, x2: 101, y2: 29 }, //Rocks by portal
+        { x1: 102, y1: 29, x2: 109, y2: 29 }, //Rocks by portal
+        { x1: 108, y1: 30, x2: 109, y2: 31 }, //Rocks by portal
+        { x1: 108, y1: 32, x2: 105, y2: 23 }, //Rocks by portal
         //Top map
         { x1: 85, y1: 2, x2: 125, y2: 6 }, //Trees top mp
         { x1: 79, y1: 3, x2: 85, y2: 7 }, //Trees by houses (left up)
@@ -124,6 +130,14 @@ export const GAME_CONFIG = {
         { x1: 44, y1: 11, x2: 67, y2: 14 }, //Trees by swamp - closer
         { x1: 57, y1: 15, x2: 67, y2: 18 }, //trees by swamp - closer
         { x1: 68, y1: 0, x2: 94, y2: 8 }, //Trees a bit away from swamp
+        //Trees in the middle of the map (cluster 1)
+        { x1: 67, y1: 38, x2: 71, y2: 40 }, //up
+        { x1: 66, y1: 40, x2: 75, y2: 53 }, //Trees in the middle
+        { x1: 75, y1: 42, x2: 76, y2: 52 }, //Left side
+        { x1: 64, y1: 41, x2: 66, y2: 54 }, //Right side
+        { x1: 67, y1: 51, x2: 72, y2: 55 }, //Down
+        //(cluster 2)
+        { x1: 84, y1: 48, x2: 91, y2: 57 },
         //Waterfall
         { x1: 149, y1: 0, x2: 150, y2: 4 }, //Rock by waterfall
         { x1: 151, y1: 0, x2: 151, y2: 5 }, //Rock by waterfall
@@ -215,15 +229,21 @@ export const GAME_CONFIG = {
         { x1: 180, y1: 47, x2: 186, y2: 61 }, //Cluster of mushrooms
         { x1: 155, y1: 71, x2: 186, y2: 77 }, //Mushrooms and mountains
         { x1: 117, y1: 74, x2: 129, y2: 79 }, //Mushrooms and mountains
+        { x1: 150, y1: 67, x2: 150, y2: 69 }, //Tiny blue mushroom
+        { x1: 157, y1: 67, x2: 164, y2: 72 }, //Muck by mushroom
+        { x1: 164, y1: 66, x2: 186, y2: 72 }, //Muck by mushrooms
+        { x1: 169, y1: 60, x2: 176, y2: 71 }, // Muck by mushroom
+        { x1: 158, y1: 59, x2: 172, y2: 64 }, //Muck by mushrooms
         //Bottom map
         { x1: 60, y1: 72, x2: 67, y2: 77 }, //Bottom tree cluster
         { x1: 56, y1: 67, x2: 63, y2: 71 }, //Above the other tree cluster
         { x1: 66, y1: 66, x2: 79, y2: 71 }, //Besides the tree cluster (trees)
         { x1: 63, y1: 61, x2: 78, y2: 66 }, //Above the tree cluster
+        { x1: 111, y1: 73, x2: 118, y2: 79 }, //Trees by mushrooms
         //Mountain
         { x1: 0, y1: 70, x2: 33, y2: 93 }, //Mountain far left of map
         { x1: 35, y1: 81, x2: 61, y2: 97 }, //Mountains left side of map
-        { x1: 63, y1: 92, x2: 155, y2: 111 }, //Mountains going to boss cave
+        { x1: 63, y1: 92, x2: 155, y2: 101 }, //Mountains going to boss cave
         { x1: 130, y1: 75, x2: 165, y2: 95 }, //Mountains and some mushrooms - with boss cave
         { x1: 163, y1: 72, x2: 186, y2: 97 }, // Mountains by boss cave
         //Magical mushroom portal
@@ -232,7 +252,45 @@ export const GAME_CONFIG = {
         { x1: 101, y1: 115, x2: 119, y2: 124 }, //Continuing bottom of map (mid)
         { x1: 120, y1: 118, x2: 176, y2: 124 }, //Continuing bottom of map (right)
         { x1: 173, y1: 69, x2: 186, y2: 124 }, //Continuing map (whole of right side)
-        // make one key stone  sprite with action passable, surround by solids and a text about an invisibel wall blocking the way forward
+        { x1: 142, y1: 116, x2: 186, y2: 124 }, //continuing map (right side-bottom)
+        { x1: 25, y1: 99, x2: 28, y2: 101 }, //Water around portal
+        { x1: 23, y1: 99, x2: 25, y2: 99 }, //Water around portal
+        { x1: 15, y1: 98, x2: 10, y2: 99 }, //Water around portal
+        { x1: 14, y1: 101, x2: 10, y2: 101 }, //Water around portal
+        { x1: 10, y1: 102, x2: 14, y2: 102 }, //Water around portal
+        { x1: 11, y1: 103, x2: 14, y2: 103 }, //Water around portal
+        { x1: 13, y1: 104, x2: 26, y2: 104 }, //Water around portal
+        { x1: 15, y1: 105, x2: 25, y2: 105 }, //Water around portal
+        { x1: 132, y1: 104, x2: 137, y2: 104 }, //Rock by boss cave
+        { x1: 132, y1: 105, x2: 139, y2: 106 }, //Rock by boss cave
+        //The portal
+        { x1: 17, y1: 100, x2: 15, y2: 100 }, //Rocks by portal
+        { x1: 15, y1: 99, x2: 15, y2: 98 }, //Rocks by portal
+        { x1: 17, y1: 98, x2: 24, y2: 98 }, //Rocks by portal
+        { x1: 23, y1: 98, x2: 24, y2: 100 }, //Rocks by portal
+        { x1: 20, y1: 101, x2: 23, y2: 101 }, //Rocks by portal
+        { x1: 20, y1: 96, x2: 20, y2: 94 }, //Mushrooms around portal (Bottom yellow)
+        { x1: 17, y1: 90, x2: 20, y2: 92 }, //Mushrooms around portal (top yellow)
+        { x1: 10, y1: 98, x2: 10, y2: 93 }, //Mushrooms around portal (bottom purple)
+        { x1: 10, y1: 91, x2: 13, y2: 92 }, //Mushrooms around portal (top purple)
+        { x1: 6, y1: 103, x2: 6, y2: 99 }, //mushrooms around portal (bottom pink)
+        { x1: 4, y1: 96, x2: 7, y2: 99 }, //Mushrooms around portal (top pink)
+        { x1: 8, y1: 108, x2: 8, y2: 106 }, //Mushrooms around portal (bottom dark-pink)
+        { x1: 8, y1: 105, x2: 9, y2: 105 }, //Mushrooms around portal (top dark-pink)
+        { x1: 14, y1: 110, x2: 14, y2: 108 }, //Mushrooms around portal (bottom glow-yellow)
+        { x1: 13, y1: 106, x2: 14, y2: 107 }, //Mushrooms around portal (top glow-yellow)
+        { x1: 31, y1: 110, x2: 30, y2: 108 }, //Mushrooms around portal (bottom purple left)
+        { x1: 28, y1: 106, x2: 30, y2: 107 }, //Mushrooms around portal (top purple left)
+        { x1: 22, y1: 93, x2: 23, y2: 95 }, //Dice
+        //Boss cave (rocks + crystals)
+        { x1: 139, y1: 106, x2: 156, y2: 111 }, //big solid rock (right)
+        { x1: 139, y1: 112, x2: 147, y2: 112 }, //Big solid rock (bottom right)
+        { x1: 144, y1: 102, x2: 151, y2: 105 }, //Big solid rock (top right)
+        { x1: 151, y1: 95, x2: 161, y2: 105 }, //Big solid rock (middle)
+        { x1: 152, y1: 88, x2: 186, y2: 98 }, //Big solid rock (middle-left)
+        { x1: 158, y1: 117, x2: 186, y2: 125 }, //Big solid rock (middle bottom)
+        { x1: 164, y1: 114, x2: 174, y2: 124 }, //Big solid rock (middle bottom)
+
     ],
 
     // Triggers are the main way to build gameplay.
@@ -648,6 +706,34 @@ export const GAME_CONFIG = {
                     kind: "openModalVideo",
                     title: "Intro Video",
                     contentKey: "intro_clip",
+                },
+            ],
+        },
+        {
+            id: "waterfall_video",
+            type: "onEnterCell",
+            x: 157,
+            y: 11,
+            sprite: "assets/sprites/question.png",
+            actions: [
+                {
+                    kind: "openModalVideo",
+                    title: "Waterfall",
+                    contentKey: "waterfall_clip",
+                },
+            ],
+        },
+        {
+            id: "gate_video",
+            type: "onEnterCell",
+            x: 135,
+            y: 115,
+            sprite: "assets/sprites/question.png",
+            actions: [
+                {
+                    kind: "openModalVideo",
+                    title: "gate",
+                    contentKey: "gate_clip",
                 },
             ],
         },
