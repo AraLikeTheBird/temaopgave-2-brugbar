@@ -413,7 +413,28 @@ export const GAME_CONFIG = {
     // { kind: "teleport", targetX: 10, targetY: 4 }
     // { kind: "makePassable", passableSprite: null }
     triggers: [
-
+//Mushroom-girl
+        {   id: "mushroom-girl",
+            type: "onEnterCell",
+            x: 116,
+            y: 24,
+            sprite: { src: "assets/sprites/npc-mushroom-sheet.png",
+                frames: 4,
+                speed: 350,
+                tileSize: 32,
+            }
+        },
+//Mushroom girl
+        { id: "swamp-girl",
+            type: "onEnterCell",
+            x: 19,
+            y: 35,
+            sprite: { src: "assets/sprites/npc-girl-sheet.png",
+                frames: 4,
+                speed: 350,
+                tileSize: 32
+            }
+        },
         //slug
         {
             id: "slug",
