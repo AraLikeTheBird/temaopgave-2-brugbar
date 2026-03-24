@@ -57,9 +57,8 @@ export const GAME_CONFIG = {
             coin: 0,
         },
         stats: {
-            health: 5,
+            health: 3,
             strength: 1,
-            slug_health: 2,
         },
     },
 
@@ -276,64 +275,6 @@ export const GAME_CONFIG = {
     // { kind: "teleport", targetX: 10, targetY: 4 }
     // { kind: "makePassable", passableSprite: null }
     triggers: [
-        //slug
-        {
-            id: "slug",
-            type: "onInteractCell",
-            x: 168,
-            y: 65,
-            sprite: {
-                src: "assets/sprites/slugsheet.png",
-                frames: 4,
-                speed: 350,
-            },
-            actions: [
-                {
-                    kind: "changeStat",
-                    statKey: "slug_health",
-                    amount: -1,
-                },
-                {
-                    kind: "openModalText",
-                    title: "AHHHH!",
-                    text: "Hit it in the mushrooms!",
-                }
-            ]
-        },
-        {
-            id: "slug_dead",
-            type: "onInteractCell",
-            x: 168,
-            y: 65,
-            conditions: [
-                { scope: "stats", key: "slug_health", op: "<=", value: 0 }
-            ],
-            actions: [
-                {
-                    kind: "makePassable",
-                    passableSprite: null,
-                },
-                {
-                    kind: "changeStat",
-                    statKey: "health",
-                    amount: -1
-                },
-                {
-                    kind: "openModalText",
-                    title: "Close to death... Defeated!!",
-                    text: "Here.. is your clue..." +
-                        "I stand tall and mighty, yet i never walk. I give shade and fruits but never talk.." +
-                        "What am i?"
-                }
-            ]
-        },
-
-
-        // slug
-        //tree
-
-        //tree
-        //frog
         { id: "frog",
             type: "onInteractCell",
             isSolid: true,
@@ -345,8 +286,10 @@ export const GAME_CONFIG = {
                 speed: 350,
                 tilesize: 32,
             }
+
+
+
         },
-        //frog
         {
             id: "chestclosed 1",
             type: "onInteractCell",
