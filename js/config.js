@@ -1265,10 +1265,34 @@ export const GAME_CONFIG = {
             ],
         },
         {
-            id: "portal_right_jump",
+            id: "super special key1",
+            type: "onInteractCell",
+            x: 94,
+            y: 79,
+            once: true,
+            sprite: "assets/sprites/question.png",
+            actions: [
+                {
+                    kind: "playSound",
+                    soundKey: "pickup",
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "super special key2",
+                    amount: 1,
+                },
+                {
+                    kind: "openModalText",
+                    title: "Good catch!",
+                    text: "good job on founding the super special key! Now you can go battle the boss!!.",
+                },
+            ],
+        },
+        {
+            id: "portal_up_jump",
             type: "onEnterCell",
-            x: 12,
-            y: 3,
+            x: 103,
+            y: 30,
             actions: [
                 {
                     kind: "playSound",
@@ -1276,8 +1300,8 @@ export const GAME_CONFIG = {
                 },
                 {
                     kind: "teleport",
-                    targetX: 7,
-                    targetY: 3,
+                    targetX: 18,
+                    targetY: 100,
                     sfx: "teleport",
                 },
             ],
