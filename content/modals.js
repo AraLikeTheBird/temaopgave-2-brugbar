@@ -120,4 +120,16 @@ export const MODAL_CONTENT = {
         videoType: "video/mp4",
         description: "Sample local video file from assets/video/intro.mp4",
     },
+    waterfall_clip: {
+        title: "Waterfall Clip",
+        videoSrc: "assets/video/waterfall.mp4",
+        videoType: "video/mp4",
+        description: "Behold the beautyful waterfall of feyworld ",
+    },
+    gate_clip: {
+        title: "gate clip",
+        videoSrc: "assets/video/gate.mp4",
+        videoType: "video/mp4",
+        description: "behold the boss cave",
+    },
 };

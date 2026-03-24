@@ -230,6 +230,10 @@ export const GAME_CONFIG = {
         { x1: 155, y1: 71, x2: 186, y2: 77 }, //Mushrooms and mountains
         { x1: 117, y1: 74, x2: 129, y2: 79 }, //Mushrooms and mountains
         { x1: 150, y1: 67, x2: 150, y2: 69 }, //Tiny blue mushroom
+        { x1: 157, y1: 67, x2: 164, y2: 72 }, //Muck by mushroom
+        { x1: 164, y1: 66, x2: 186, y2: 72 }, //Muck by mushrooms
+        { x1: 169, y1: 60, x2: 176, y2: 71 }, // Muck by mushroom
+        { x1: 158, y1: 59, x2: 172, y2: 64 }, //Muck by mushrooms
         //Bottom map
         { x1: 60, y1: 72, x2: 67, y2: 77 }, //Bottom tree cluster
         { x1: 56, y1: 67, x2: 63, y2: 71 }, //Above the other tree cluster
@@ -500,6 +504,34 @@ export const GAME_CONFIG = {
                     kind: "openModalVideo",
                     title: "Intro Video",
                     contentKey: "intro_clip",
+                },
+            ],
+        },
+        {
+            id: "waterfall_video",
+            type: "onEnterCell",
+            x: 157,
+            y: 11,
+            sprite: "assets/sprites/question.png",
+            actions: [
+                {
+                    kind: "openModalVideo",
+                    title: "Waterfall",
+                    contentKey: "waterfall_clip",
+                },
+            ],
+        },
+        {
+            id: "gate_video",
+            type: "onEnterCell",
+            x: 135,
+            y: 115,
+            sprite: "assets/sprites/question.png",
+            actions: [
+                {
+                    kind: "openModalVideo",
+                    title: "gate",
+                    contentKey: "gate_clip",
                 },
             ],
         },
