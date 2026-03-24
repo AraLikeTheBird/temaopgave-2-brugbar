@@ -371,6 +371,7 @@ export const GAME_CONFIG = {
         { x1: 152, y1: 88, x2: 186, y2: 98 }, //Big solid rock (middle-left)
         { x1: 158, y1: 117, x2: 186, y2: 125 }, //Big solid rock (middle bottom)
         { x1: 164, y1: 114, x2: 174, y2: 124 }, //Big solid rock (middle bottom)
+        {x1:16, y1: 102, x2:25, y2: 102}, // portal b water
 
     ],
 
@@ -414,57 +415,100 @@ export const GAME_CONFIG = {
     // { kind: "makePassable", passableSprite: null }
     triggers: [
 
-        //slug
-        {
-            id: "slug",
+        //chests
+        {id: "looted chest 2",
             type: "onInteractCell",
-            x: 168,
-            y: 65,
-            sprite: {
-                src: "assets/sprites/slugsheet.png",
-                frames: 4,
-                speed: 350,
-            },
+            isSolid: true,
+            x: 70,
+            y:17,
+            sprite: "assets/sprites/pix chest open.png",
             actions: [
                 {
-                    kind: "changeStat",
-                    statKey: "slug_health",
-                    amount: -1,
+                    kind: "playPlayerAnimation",
+                    animationKey: "angry",
+                    loops: 4,
                 },
-                {
-                    kind: "openModalText",
-                    title: "AHHHH!",
-                    text: "Hit it in the mushrooms!",
+                {kind: "openModalText",
+                    title: "Whoops",
+                    text: "it looks like you already looted this chest, try and find another one instead"
                 }
             ]
         },
         {
-            id: "slug_dead",
+            id: "chestclosed 2",
             type: "onInteractCell",
-            x: 168,
-            y: 65,
-            conditions: [
-                { scope: "stats", key: "slug_health", op: "<=", value: 0 }
-            ],
-            actions: [
-                {
-                    kind: "makePassable",
-                    passableSprite: null,
+            isSolid: true,
+            x: 70,
+            y: 17,
+            once: true,
+            sprite: "assets/sprites/pix chest closed.png",
+            actions:[
+                {kind: "openModalHtml",
+                    contentKey: "hammer"
+
                 },
-                {
-                    kind: "changeStat",
-                    statKey: "health",
-                    amount: -1
+                {kind: "playSound",
+                    soundKey: "pickup"
                 },
-                {
-                    kind: "openModalText",
-                    title: "Close to death... Defeated!!",
-                    text: "Here.. is your clue..." +
-                        "I stand tall and mighty, yet i never walk. I give shade and fruits but never talk.." +
-                        "What am i?"
-                }
+                {kind:"playPlayerAnimation",
+                    animationKey: "exclamation",
+                    loops: 4,
+                },
+                {kind: "giveItem",
+                    itemKey: "Hammer",
+                    amount: 1,
+                },
+
             ]
         },
+        {id: "looted chest 1",
+            type: "onInteractCell",
+            isSolid: true,
+            x: 60,
+            y:62,
+            sprite: "assets/sprites/pix chest open.png",
+            actions: [
+                {
+                    kind: "playPlayerAnimation",
+                    animationKey: "angry",
+                    loops: 4,
+                },
+                {kind: "openModalText",
+                    title: "Whoops",
+                    text: "it looks like you already looted this chest, try and find another one instead"
+                }
+
+            ]
+
+        },
+        {
+            id: "chestclosed 1",
+            type: "onInteractCell",
+            isSolid: true,
+            x: 60,
+            y: 62,
+            once: true,
+            sprite: "assets/sprites/pix chest closed.png",
+            actions:[
+                {kind: "openModalHtml",
+                    contentKey: "rapier"
+
+                },
+                {kind: "playSound",
+                    soundKey: "pickup"
+                },
+                {kind:"playPlayerAnimation",
+                    animationKey: "exclamation",
+                    loops: 4,
+                },
+                {kind: "giveItem",
+                    itemKey: "Rapier",
+                    amount: 1,
+                },
+
+            ]
+        },
+
         //signs
         {
             id: "vandfald_sign",
@@ -537,16 +581,11 @@ export const GAME_CONFIG = {
                 {
                     kind: "openModalText",
                     title: "Hello there little friend",
-                    text: "To find the key, go back to where you came from.",
+                    text: "Take the key and go back to where you started.",
                 },
             ]
         },
         //tree
-
-
-
-
-
         {
             id:"boss hitbox",
             type: "onInteractCell",
@@ -565,55 +604,7 @@ export const GAME_CONFIG = {
                 }
             ]
         },
-        {id: "looted chest 1",
-            type: "onInteractCell",
-            isSolid: true,
-            x: 60,
-            y:62,
-            sprite: "assets/sprites/pix chest open.png",
-            actions: [
-                {
-                    kind: "playPlayerAnimation",
-                    animationKey: "angry",
-                    loops: 4,
-                },
-                {kind: "openModalText",
-                    title: "Whoops",
-                    text: "it looks like you already looted this chest, try and find another one instead"
-                }
-
-            ]
-
-        },
-        {
-            id: "chestclosed 1",
-            type: "onInteractCell",
-            isSolid: true,
-            x: 60,
-            y: 62,
-            once: true,
-            sprite: "assets/sprites/pix chest closed.png",
-            actions:[
-                {kind: "openModalHtml",
-                    contentKey: "rapier"
-
-                },
-                {kind: "playSound",
-                    soundKey: "pickup"
-                },
-                {kind:"playPlayerAnimation",
-                    animationKey: "exclamation",
-                    loops: 4,
-                },
-                {kind: "giveItem",
-                    itemKey: "Rapier",
-                    amount: 1,
-                },
-
-            ]
-        },
-
-
+                        //NPC
         //slug
         {
             id: "slug",
