@@ -106,7 +106,7 @@ export const GAME_CONFIG = {
         //Portal in village
         { x1: 102, y1: 31, x2: 101, y2: 31 }, //Rocks by portal
         { x1: 101, y1: 30, x2: 101, y2: 29 }, //Rocks by portal
-        { x1: 102, y1: 29, x2: 109, y2: 29 }, //Rocks by portal
+        { x1: 102, y1: 29, x2: 108, y2: 29 }, //Rocks by portal
         { x1: 108, y1: 30, x2: 109, y2: 31 }, //Rocks by portal
         { x1: 108, y1: 32, x2: 105, y2: 23 }, //Rocks by portal
         //Top map
@@ -414,6 +414,99 @@ export const GAME_CONFIG = {
     // { kind: "teleport", targetX: 10, targetY: 4 }
     // { kind: "makePassable", passableSprite: null }
     triggers: [
+        //Mushroom girl
+        {   id: "mushroom2",
+            type: "onInteractCell",
+            x: 116,
+            y: 24,
+            isSolid: true,
+            sprite: {
+                src: "assets/sprites/npc-mushroom-sheet.png",
+                frames: 4,
+                speed: 350,
+                tileSize: 32,
+            },
+            actions: [
+                {
+                    kind: "openModalText",
+                    title: "A clue to where you need to go",
+                    text: "Try going where there is water, streaming down th mountain",
+                },
+            ],
+        },
+        {   id: "mushroom1",
+            type: "onInteractCell",
+            x: 116,
+            y: 24,
+            once: true,
+            isSolid: true,
+            sprite: { src: "assets/sprites/npc-mushroom-sheet.png",
+                frames: 4,
+                speed: 350,
+                tileSize: 32,
+            },
+            actions: [
+                {
+                    kind:"openModalText",
+                    title: "Here is a clue!!",
+                    text: "What belongs to you, but others use it more than you do?",
+                },
+            ],
+        },
+
+        //swamp girl
+        {
+            id: "Swamp-girl dead1",
+            type: "onInteractCell",
+            x: 19,
+            y: 35,
+            isSolid: true,
+            conditions: [
+                { scope: "stats", key: "Swamp_health", op: "<=", value: 0 },
+            ],
+            actions: [
+                {
+                    kind: "makePassable",
+                    passableSprite: null,
+                },
+                {
+                    kind: "changeStat",
+                    statKey: "health",
+                    amount: -1
+                },
+                {
+                    kind: "openModalText",
+                    title: "ARGH! almost dead",
+                    text: "Here.. is your clue..." +
+                        "I am soft, i am round, in forest floors i am found... What am i??"
+                }
+            ]
+        },
+        { id: "swamp-girl2",
+            type: "onEnterCell",
+            x: 19,
+            y: 35,
+            once: true,
+            isSolid: true,
+            sprite: {
+                src: "assets/sprites/npc-girl-sheet.png",
+                frames: 4,
+                speed: 350,
+                tileSize: 32
+            },
+            actions: [
+                {
+                    kind: "changeStat",
+                    statKey: "swamp_health",
+                    amount: -1,
+                },
+                {
+                    kind: "openModalText",
+                    title: "ouchy!",
+                    text: "Hit it on the head",
+                },
+            ],
+        },
 
         //chests
         {id: "looted chest 2",
@@ -1163,10 +1256,34 @@ export const GAME_CONFIG = {
             ],
         },
         {
-            id: "portal_right_jump",
+            id: "super special key1",
+            type: "onInteractCell",
+            x: 94,
+            y: 79,
+            once: true,
+            sprite: "assets/sprites/question.png",
+            actions: [
+                {
+                    kind: "playSound",
+                    soundKey: "pickup",
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "super special key2",
+                    amount: 1,
+                },
+                {
+                    kind: "openModalText",
+                    title: "Good catch!",
+                    text: "good job on founding the super special key! Now you can go battle the boss!!.",
+                },
+            ],
+        },
+        {
+            id: "portal_up_jump",
             type: "onEnterCell",
-            x: 12,
-            y: 3,
+            x: 103,
+            y: 30,
             actions: [
                 {
                     kind: "playSound",
@@ -1174,8 +1291,8 @@ export const GAME_CONFIG = {
                 },
                 {
                     kind: "teleport",
-                    targetX: 7,
-                    targetY: 3,
+                    targetX: 18,
+                    targetY: 100,
                     sfx: "teleport",
                 },
             ],
