@@ -341,7 +341,19 @@ export const GAME_CONFIG = {
                 frames: 4,
                 speed: 350,
                 tileSize: 32,
-            }
+            },
+            actions: [
+                {
+                    kind:"openModalText",
+                    title: "Here is a clue, where to go next!",
+                    text: "What belongs to you, but others use it more than you do?",
+                },
+                {
+                    kind: "openModalText",
+                    title: "A clue to where you need to go",
+                    text: "Try going where there is water, streaming down th mountain"
+                },
+            ],
         },
         //swamp girl
         { id: "swamp-girl",
@@ -352,8 +364,47 @@ export const GAME_CONFIG = {
                 frames: 4,
                 speed: 350,
                 tileSize: 32
-            }
+            },
+            actions: [
+                {
+                   kind: "changeStat",
+                   statKey: "swamp_health",
+                   amount: -1,
+                },
+                {
+                  kind: "openModalText",
+                  title: "ouchy!",
+                  text: "Hit it on the head",
+                },
+            ],
         },
+        {
+            id: "Swamp_dead",
+            type: "onInteractCell",
+            x: 19,
+            y: 35,
+            conditions: [
+                { scope: "stats", key: "Swamp_health", op: "<=", value: 0 },
+            ],
+            actions: [
+                {
+                    kind: "makePassable",
+                    passableSprite: null,
+                },
+                {
+                    kind: "changeStat",
+                    statKey: "health",
+                    amount: -1
+                },
+                {
+                    kind: "openModalText",
+                    title: "ARGH! almost dead",
+                    text: "Here.. is your clue..." +
+                        "I am soft, i am round, in forest floors i am found... What am i??"
+                }
+            ]
+        },
+
         //slug
         {
             id: "slug",
