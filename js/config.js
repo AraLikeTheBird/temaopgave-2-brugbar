@@ -830,6 +830,7 @@ export const GAME_CONFIG = {
             x: 19,
             y: 35,
             isSolid: true,
+            once: true,
             conditions: [
                 {scope: "stats", key: "Swamp_health", op: "<=", value: 0},
             ],
