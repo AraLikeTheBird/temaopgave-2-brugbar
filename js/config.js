@@ -791,12 +791,7 @@ export const GAME_CONFIG = {
                 {
                     kind: "openModalText",
                     title: "A clue to where you need to go",
-                    text: "Try going where there is water, streaming down th mountain",
-                },
-                {
-                    kind: "giveItem",
-                    itemKey: "Clue",
-                    amount: 1
+                    text: "Try going where there is water, streaming down the mountain.",
                 },
             ],
         },
@@ -818,6 +813,11 @@ export const GAME_CONFIG = {
                     kind: "openModalText",
                     title: "Here is a clue!!",
                     text: "What belongs to you, but others use it more than you do?",
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "Clue",
+                    amount: 1
                 },
 
             ],
