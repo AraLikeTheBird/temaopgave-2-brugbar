@@ -912,7 +912,7 @@ export const GAME_CONFIG = {
             type: "onInteractCell",
             x: 168,
             y: 65,
-            once: true
+            once: true,
             sprite: "assets/sprites/slugsheet.png",
             conditions: [
                 {scope: "stats", key: "slug_health", op: "<=", value: 0}
