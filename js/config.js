@@ -21,7 +21,7 @@ export const GAME_CONFIG = {
 
     // Player setup.
     player: {
-        startTile: {x: 153, y: 115},
+        startTile: {x: 104, y: 30},
         moveDurationMs: 150,
         defaultFacing: "down",
         spriteSheetSrc: "assets/player/player_sheet.png",
@@ -706,17 +706,22 @@ export const GAME_CONFIG = {
             type: "onEnterCell",
             x: 96,
             y: 80,
+            conditions: [
+                {scope: "stats", key: "Clue", op: "=", value: 5}
+            ],
             actions: [
                 {
-                    kind: "openModalText",
-                    title: "Hello there little friend",
-                    text: "Take the key and go back to where you started.",
+                   kind: "giveItem",
+                    itemKey: "super special key2",
+                    amount: 1,
                 },
-                {kind: "giveItem",
-                    itemKey: "Clue",
-                    amount: 1
-                }
-            ]
+                {
+                    kind: "openModalText",
+                    title: "Good catch!",
+                    text: "good job on founding the super special key! Now you can go battle the boss!!." +
+                        "Take the key and go back to where you started."
+                },
+            ],
         },
 
         //Frog
@@ -1163,7 +1168,6 @@ export const GAME_CONFIG = {
             x: 94,
             y: 79,
             once: true,
-            sprite: "assets/sprites/question.png",
             actions: [
                 {
                     kind: "playSound",
@@ -1173,11 +1177,6 @@ export const GAME_CONFIG = {
                     kind: "giveItem",
                     itemKey: "super special key2",
                     amount: 1,
-                },
-                {
-                    kind: "openModalText",
-                    title: "Good catch!",
-                    text: "good job on founding the super special key! Now you can go battle the boss!!.",
                 },
             ],
         },
