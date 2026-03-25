@@ -372,6 +372,7 @@ export const GAME_CONFIG = {
         { x1: 158, y1: 117, x2: 186, y2: 125 }, //Big solid rock (middle bottom)
         { x1: 164, y1: 114, x2: 174, y2: 124 }, //Big solid rock (middle bottom)
         {x1:16, y1: 102, x2:25, y2: 102}, // portal b water
+        {x1:27, y1: 103,}, // portal b water 2
 
     ],
 
@@ -415,6 +416,94 @@ export const GAME_CONFIG = {
     // { kind: "makePassable", passableSprite: null }
     triggers: [
         //chests
+        {id: "looted chest 4",
+            type: "onInteractCell",
+            isSolid: true,
+            x: 138,
+            y:51,
+            sprite: "assets/sprites/pix chest open.png",
+            actions: [
+                {
+                    kind: "playPlayerAnimation",
+                    animationKey: "angry",
+                    loops: 4,
+                },
+                {kind: "openModalText",
+                    title: "Whoops",
+                    text: "it looks like you already looted this chest, try and find another one instead"
+                }
+            ]
+        },
+        {
+            id: "chestclosed 4",
+            type: "onInteractCell",
+            isSolid: true,
+            x: 138,
+            y: 51,
+            once: true,
+            sprite: "assets/sprites/pix chest closed.png",
+            actions:[
+                {kind: "openModalHtml",
+                    contentKey: "crystalsword"
+
+                },
+                {kind: "playSound",
+                    soundKey: "pickup"
+                },
+                {kind:"playPlayerAnimation",
+                    animationKey: "exclamation",
+                    loops: 4,
+                },
+                {kind: "giveItem",
+                    itemKey: "Crystal Sword",
+                    amount: 1,
+                },
+            ]
+        },
+        {id: "looted chest 3",
+            type: "onInteractCell",
+            isSolid: true,
+            x: 138,
+            y:51,
+            sprite: "assets/sprites/pix chest open.png",
+            actions: [
+                {
+                    kind: "playPlayerAnimation",
+                    animationKey: "angry",
+                    loops: 4,
+                },
+                {kind: "openModalText",
+                    title: "Whoops",
+                    text: "it looks like you already looted this chest, try and find another one instead"
+                }
+            ]
+        },
+        {
+            id: "chestclosed 3",
+            type: "onInteractCell",
+            isSolid: true,
+            x: 138,
+            y: 51,
+            once: true,
+            sprite: "assets/sprites/pix chest closed.png",
+            actions:[
+                {kind: "openModalHtml",
+                    contentKey: "axe"
+
+                },
+                {kind: "playSound",
+                    soundKey: "pickup"
+                },
+                {kind:"playPlayerAnimation",
+                    animationKey: "exclamation",
+                    loops: 4,
+                },
+                {kind: "giveItem",
+                    itemKey: "Axe",
+                    amount: 1,
+                },
+            ]
+        },
         {id: "looted chest 2",
             type: "onInteractCell",
             isSolid: true,
@@ -571,6 +660,7 @@ export const GAME_CONFIG = {
         },
         //signs
         //tree
+
         //tree
         {
             id: "tree",
@@ -585,7 +675,8 @@ export const GAME_CONFIG = {
                 },
             ]
         },
-                        //NPC
+
+        //Frog
         { id: "frog 2",
             type: "onInteractCell",
             isSolid: true,
@@ -601,7 +692,7 @@ export const GAME_CONFIG = {
             actions: [
                 { kind: "openModalText",
                     title: "Reed Hoppington",
-                    text: "i already gave you the note... please stop interrupting my fishing"
+                    text: "I already gave you the note... please stop interrupting my fishing"
                 }
             ]
         },
@@ -634,6 +725,7 @@ export const GAME_CONFIG = {
 
             ]
         },
+
         //Mushroom girl
         {   id: "mushroom2",
             type: "onInteractCell",
@@ -673,6 +765,7 @@ export const GAME_CONFIG = {
                 },
             ],
         },
+
         //swamp girl
         {
             id: "Swamp-girl dead1",
@@ -726,6 +819,7 @@ export const GAME_CONFIG = {
                 },
             ],
         },
+
         //slug
         {
             id: "slug",
@@ -783,201 +877,157 @@ export const GAME_CONFIG = {
                 }
             ]
         },
+
+        //boss
         {
-            id:"boss hitbox",
+            id: "bbg",
             type: "onInteractCell",
+            x: 165,
+            y: 108,
             isSolid: true,
-            x:167,
-            y:109,
             actions: [
                 {
-                    kind: "playSound",
-                    soundKey: "damage",
+                    kind: "changeStat",
+                    statKey: "boss_health",
+                    amount: -1,
                 },
                 {
                     kind: "openModalText",
-                    title: "Boss",
-                    text: "you defeated the boss and won!",
+                    title: "AHHHH!",
+                    text: "Ooh that looked like it hurts",
                 }
             ]
         },
-
-
         {
-            id: "coin_1",
-            type: "onEnterCell",
-            x: 1,
-            y: 2,
-            once: true,
-            sprite: "assets/sprites/coin.gif",
-            actions: [
-                {
-                    kind: "playSound",
-                    soundKey: "pickup",
-                },
-                {
-                    kind: "giveItem",
-                    itemKey: "coin",
-                    amount: 1,
-                },
-                {
-                    kind: "playPlayerAnimation",
-                    animationKey: "happy",
-                    loops: 4,
-                },
-            ],
-        },
-        {
-            id: "picked_up_coin",
-            type: "onEnterCell",
-            x: 1,
-            y: 3,
-            once: true,
-            sprite: "assets/sprites/question.png",
-            actions: [
-                {
-                    kind: "openModalText",
-                    title: "Wow, did you see that!",
-                    text: "You picked up a coin! It was defined as a trigger in the config.js, try to find it.",
-                },
-            ],
-        },
-        {
-            id: "coin_sign",
+            id: "bbg1",
             type: "onInteractCell",
-            x: 3,
-            y: 5,
+            x: 166,
+            y: 108,
             isSolid: true,
-            sprite: "assets/sprites/sign.png",
-            conditions: [{ scope: "items", key: "coin", op: ">=", value: 2 }],
             actions: [
                 {
-                    kind: "openModalHtml",
-                    title: "Coin Sign",
-                    src: "asset/video/"
-
-                },
-            ],
-            elseAction: {
-                kind: "openModalText",
-                title: "Oh no!!",
-                text: "This sign requires at least 2 coins. It says so in the 'conditions' for the trigger for this sign.",
-            },
-        },
-        {
-            id: "coin_2",
-            type: "onEnterCell",
-            x: 1,
-            y: 6,
-            once: true,
-            sprite: "assets/sprites/coin.gif",
-            actions: [
-                {
-                    kind: "playSound",
-                    soundKey: "pickup",
-                },
-                {
-                    kind: "giveItem",
-                    itemKey: "coin",
-                    amount: 1,
-                },
-                {
-                    kind: "playPlayerAnimation",
-                    animationKey: "sad",
-                    loops: 4,
-                },
-            ],
-        },
-        {
-            id: "key_pink",
-            type: "onInteractCell",
-            x: 1,
-            y: 3,
-            once: true,
-            sprite: "assets/sprites/question.png",
-            actions: [
-                {
-                    kind: "playSound",
-                    soundKey: "pickup",
-                },
-                {
-                    kind: "giveItem",
-                    itemKey: "key_pink",
-                    amount: 1,
-
-
+                    kind: "changeStat",
+                    statKey: "boss_health",
+                    amount: -1,
                 },
                 {
                     kind: "openModalText",
-                    title: "Good catch!",
-                    text: "You found the super secret pink key! Now you can open the door with it.",
-                },
-            ],
+                    title: "AHHHH!",
+                    text: "Ooh that looked like it hurts",
+                }
+            ]
         },
         {
-            id: "door_pink",
+            id: "bbg3",
             type: "onInteractCell",
-            x: 1,
-            y: 7,
-            once: true,
+            x: 167,
+            y: 109,
             isSolid: true,
-            sprite: "assets/sprites/door_pink.png",
+            actions: [
+                {
+                    kind: "changeStat",
+                    statKey: "boss_health",
+                    amount: -1,
+                },
+                {
+                    kind: "openModalText",
+                    title: "AHHHH!",
+                    text: "Ooh that looked like it hurts",
+                }
+            ]
+        },
+        {
+            id: "bbg_dead",
+            type: "onInteractCell",
+            x: 165,
+            y: 108,
             conditions: [
-                { scope: "items", key: "key_pink", op: ">=", value: 1 },
+                { scope: "stats", key: "boss_health", op: "<=", value: 0 }
             ],
             actions: [
                 {
                     kind: "makePassable",
-                    passableSprite: "assets/sprites/door_pink_open.png",
+                    passableSprite: null,
+                },
+                {
+                    kind: "changeStat",
+                    statKey: "health",
+                    amount: -1
                 },
                 {
                     kind: "openModalText",
-                    title: "You opened the door!",
-                    text: "You used the pink key to open this door. Congrats on finding the secret pink key!",
+                    title: "VICTORY!!",
+                    text: "You did it, you defeated the boss... You can go now, leave this realm to its inhabitants, I'm sure someone is waiting for you at home"
                 },
-            ],
-            elseAction: {
-                kind: "openModalText",
-                title: "Locked!",
-                text: "This door is locked with a pink key (original i know). Take a closer look at the question mark.",
-            },
+                {
+                    kind: "giveItem",
+                    itemKey: "FREEDOM!!",
+                    amount: 1
+                }
+            ]
         },
         {
-            id: "village_sign",
+            id: "bbg_dead2",
             type: "onInteractCell",
-            x: 10,
-            y: 3,
-            isSolid: true,
-            sprite: "assets/sprites/sign.png",
-            conditions: [{ scope: "stats", key: "health", op: "<=", value: 1 }],
+            x: 166,
+            y: 108,
+            conditions: [
+                { scope: "stats", key: "boss_health", op: "<=", value: 0 }
+            ],
             actions: [
                 {
-                    kind: "openModalHtml",
-                    title: "Village Sign",
-                    contentKey: "village_sign",
+                    kind: "makePassable",
+                    passableSprite: null,
                 },
-            ],
-            elseAction: {
-                kind: "openModalText",
-                title: "Village Sign",
-                text: "You can only view this if you're almost dead!",
-            },
+                {
+                    kind: "changeStat",
+                    statKey: "health",
+                    amount: -1
+                },
+                {
+                    kind: "openModalText",
+                    title: "VICTORY!!",
+                    text: "You did it, you defeated the boss... You can go now, leave this realm to its inhabitants, I'm sure someone is waiting for you at home"
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "FREEDOM!!",
+                    amount: 1
+                }
+            ]
         },
         {
-            id: "intro_video",
-            type: "onEnterCell",
-            x: 6,
-            y: 6,
-            sprite: "assets/sprites/question.png",
-            drawAbovePlayer: true,
+            id: "bbg_dead3",
+            type: "onInteractCell",
+            x: 167,
+            y: 109,
+            conditions: [
+                { scope: "stats", key: "boss_health", op: "<=", value: 0 }
+            ],
             actions: [
                 {
-                    kind: "openModalVideo",
-                    title: "Intro Video",
-                    contentKey: "intro_clip",
+                    kind: "makePassable",
+                    passableSprite: null,
                 },
-            ],
+                {
+                    kind: "changeStat",
+                    statKey: "health",
+                    amount: -1
+                },
+                {
+                    kind: "openModalText",
+                    title: "VICTORY!!",
+                    text: "You did it, you defeated the boss... You can go now, leave this realm to its inhabitants, I'm sure someone is waiting for you at home"
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "FREEDOM!!",
+                    amount: 1
+                }
+            ]
         },
+
+        //videos
         {
             id: "waterfall_video",
             type: "onEnterCell",
@@ -1006,39 +1056,8 @@ export const GAME_CONFIG = {
                 },
             ],
         },
-        {
-            id: "portal_left_jump",
-            type: "onEnterCell",
-            x: 8,
-            y: 3,
-            sprite: {
-                src: "assets/sprites/portal_overlay.png",
-                frames: 4,
-                speed: 150,
-            },
-            actions: [
-                {
-                    kind: "playSound",
-                    soundKey: "teleport",
-                },
-                {
-                    kind: "changeStat",
-                    statKey: "health",
-                    amount: -1,
-                },
-                {
-                    kind: "teleport",
-                    targetX: 13,
-                    targetY: 3,
-                    sfx: "teleport",
-                    sprite: {
-                        src: "assets/sprites/portal_action.png",
-                        frames: 4,
-                        speed: 150,
-                    },
-                },
-            ],
-        },
+
+        //key and jump
         {
             id: "super special key1",
             type: "onInteractCell",
@@ -1081,5 +1100,6 @@ export const GAME_CONFIG = {
                 },
             ],
         },
+
     ],
 };
