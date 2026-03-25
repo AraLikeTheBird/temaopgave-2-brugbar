@@ -834,6 +834,7 @@ export const GAME_CONFIG = {
             type: "onInteractCell",
             x: 19,
             y: 35,
+            once: true,
             conditions: [
                 {scope: "stats", key: "Swamp_health", op: "<=", value: 0},
             ],
@@ -870,6 +871,8 @@ export const GAME_CONFIG = {
             type: "onInteractCell",
             x: 168,
             y: 65,
+            isSolid: true,
+
             sprite: {
                 src: "assets/sprites/slugsheet.png",
                 frames: 4,
@@ -893,6 +896,7 @@ export const GAME_CONFIG = {
             type: "onInteractCell",
             x: 168,
             y: 65,
+            isSolid: true,
             once: true,
             sprite: "assets/sprites/slugsheet.png",
             conditions: [
