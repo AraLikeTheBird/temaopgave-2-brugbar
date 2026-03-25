@@ -707,7 +707,7 @@ export const GAME_CONFIG = {
             x: 96,
             y: 80,
             conditions: [
-                {scope: "stats", key: "Clue", op: "=", value: 5}
+                { scope: "stats", key: "clue", op: "=", value: 5}
             ],
             actions: [
                 {
