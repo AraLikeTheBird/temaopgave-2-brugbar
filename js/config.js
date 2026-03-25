@@ -21,7 +21,7 @@ export const GAME_CONFIG = {
 
     // Player setup.
     player: {
-        startTile: {x: 19, y: 99},
+        startTile: {x: 104, y: 30},
         moveDurationMs: 150,
         defaultFacing: "down",
         spriteSheetSrc: "assets/player/player_sheet.png",
@@ -56,7 +56,7 @@ export const GAME_CONFIG = {
         items: {
             coin: 0,
             Clue: 0,
-            weapon: 1
+            weapon: 0
         },
         stats: {
             health: 5,
