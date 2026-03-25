@@ -55,7 +55,7 @@ export const GAME_CONFIG = {
     playerState: {
         items: {
             coin: 0,
-            Clue: 0,
+            clue: 4,
             weapon: 0
         },
         stats: {
@@ -712,9 +712,12 @@ export const GAME_CONFIG = {
                 {
                     src: "assets/sprites/question.png",
                 },
-            conditions: [
-                { scope: "stats", key: "Clue", op: "===", value: 4}
-            ],
+            conditions: [{
+                scope: "items",
+                key: "clue",
+                op: "===",
+                value: 4
+            } ],
             actions: [
                 {
                     kind: "openModalText",
@@ -725,6 +728,11 @@ export const GAME_CONFIG = {
                 {
                     kind: "giveItem",
                     itemKey: "super_special_key1",
+                    amount: 1,
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "clue",
                     amount: 1,
                 },
             ],
@@ -773,7 +781,7 @@ export const GAME_CONFIG = {
             actions: [
                 {
                     kind: "giveItem",
-                    itemKey: "Clue",
+                    itemKey: "clue",
                     amount: 1
                 },
                 {
@@ -831,7 +839,7 @@ export const GAME_CONFIG = {
                 },
                 {
                     kind: "giveItem",
-                    itemKey: "Clue",
+                    itemKey: "clue",
                     amount: 1
                 },
 
@@ -869,7 +877,7 @@ export const GAME_CONFIG = {
                 },
                 {
                     kind: "giveItem",
-                    itemKey: "Clue",
+                    itemKey: "clue",
                     amount: 1
                 },
             ],
@@ -931,7 +939,7 @@ export const GAME_CONFIG = {
                 },
                 {
                     kind: "giveItem",
-                    itemKey: "Clue",
+                    itemKey: "clue",
                     amount: 1
                 },
             ],
@@ -952,7 +960,7 @@ export const GAME_CONFIG = {
                     amount: -2,
                 },
                 {
-                  kind: "changeStat",
+                    kind: "changeStat",
                     statKey: "health",
                     amount: -1
                 },
@@ -1063,7 +1071,7 @@ export const GAME_CONFIG = {
             type: "onEnterCell",
             x: 103,
             y: 30,
-            conditions: [{scope: "items", key: "Clue", op: ">=", value: 5}],
+            conditions: [{scope: "items", key: "clue", op: ">=", value: 5}],
             actions: [
                 {
                     kind: "playSound",
