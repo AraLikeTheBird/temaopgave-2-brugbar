@@ -61,6 +61,7 @@ export const GAME_CONFIG = {
             strength: 1,
             slug_health: 2,
             Boss_health: 5,
+            swamp_health: 2,
         },
     },
 
