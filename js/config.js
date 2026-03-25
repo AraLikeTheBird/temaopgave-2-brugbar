@@ -82,7 +82,6 @@ export const GAME_CONFIG = {
         pickup: "assets/sfx/pickup.wav",
         teleport: "assets/sfx/teleport.wav",
         ui_open_modal: "assets/sfx/interact.wav",
-        bgmusic: "assets/sfx/bgmusic.mp3",
     },
 
     // Non-walkable cells.
@@ -430,10 +429,6 @@ export const GAME_CONFIG = {
                     kind: "openModalText",
                     title: "Introduction",
                     text: "In a land not unlike our own, a young hero was sent by his lord on a quest. As the young hero was traveling through the forrest, he came to a clearing in the trees. Here he set up camp there. What the young hero didnt know was that a ring of glowing mushrooms and small standing stones surrounded the clearing and when the young hero woke, he had been transported to a different realm. A realm known as the 'Feywild', if he wants to complete his lords quest he must escape the Feywild. To do this he must seek the mushroom girl in town who will help him find his way to the tyrant ruling this realm and escape",
-                },
-                {
-                    kind: "playSound",
-                    soundKey: "bgmusic"
                 }
             ]
         },
@@ -713,20 +708,21 @@ export const GAME_CONFIG = {
             x: 96,
             y: 80,
             conditions: [
-                { scope: "stats", key: "clue", op: "=", value: 4}
+                { scope: "stats", key: "clue", op: "=", value: 5}
             ],
             actions: [
                 {
-                    kind: "openModalText",
-                    title: "Hello there little friend",
-                    text: "Take the key and go back to where you started.",
+                   kind: "giveItem",
+                    itemKey: "super special key2",
+                    amount: 1,
                 },
                 {
-                    kind: "giveItem",
-                    itemKey: "Clue",
-                    amount: 1
-                }
-            ]
+                    kind: "openModalText",
+                    title: "Good catch!",
+                    text: "good job on founding the super special key! Now you can go battle the boss!!." +
+                        "Take the key and go back to where you started."
+                },
+            ],
         },
 
         //Frog
@@ -834,43 +830,14 @@ export const GAME_CONFIG = {
 
         //swamp girl
         {
-            id: "Swamp-girl dead1",
-            type: "onInteractCell",
-            x: 19,
-            y: 35,
-            isSolid: true,
-            conditions: [
-                {scope: "stats", key: "Swamp_health", op: "<=", value: 0},
-            ],
-            actions: [
-                {
-                    kind: "makePassable",
-                    passableSprite: null,
-                },
-                {
-                    kind: "changeStat",
-                    statKey: "health",
-                    amount: -1
-                },
-                {
-                    kind: "openModalText",
-                    title: "ARGH! almost dead",
-                    text: "Here.. is your clue..." +
-                        "I am soft, i am round, in forest floors i am found... What am i??"
-                },
-                {
-                    kind: "giveItem",
-                    itemKey: "Clue",
-                    amount: 1
-                },
-            ],
-        },
-        {
             id: "swamp-girl2",
             type: "onInteractCell",
             x: 19,
             y: 35,
             once: true,
+            conditions: [
+                {scope: "stats", key: "Swamp_health", op: "<=", value: 0},
+            ],
             isSolid: true,
             sprite: {
                 src: "assets/sprites/npc-girl-sheet.png",
@@ -904,6 +871,8 @@ export const GAME_CONFIG = {
             type: "onInteractCell",
             x: 168,
             y: 65,
+            isSolid: true,
+
             sprite: {
                 src: "assets/sprites/slugsheet.png",
                 frames: 4,
@@ -927,6 +896,7 @@ export const GAME_CONFIG = {
             type: "onInteractCell",
             x: 168,
             y: 65,
+            isSolid: true,
             once: true,
             sprite: "assets/sprites/slugsheet.png",
             conditions: [
@@ -953,8 +923,8 @@ export const GAME_CONFIG = {
                     kind: "giveItem",
                     itemKey: "Clue",
                     amount: 1
-                }
-            ]
+                },
+            ],
         },
 
         //boss
@@ -964,7 +934,7 @@ export const GAME_CONFIG = {
             x: 165,
             y: 108,
             isSolid: true,
-            conditions: [{scope: "items", key: "rapier" || "hammer" || "axe" || "crystal sword", op: ">=", value: 1}],
+            conditions: [{scope: "items", key: "rapier"||"hammer"||"axe"||"crystal sword", op: ">=", value: 1}],
             actions: [
                 {
                     kind: "changeStat",
@@ -972,7 +942,7 @@ export const GAME_CONFIG = {
                     amount: -3,
                 },
                 {
-                    kind: "changeStat",
+                  kind: "changeStat",
                     statKey: "health",
                     amount: -1
                 }
@@ -1179,7 +1149,6 @@ export const GAME_CONFIG = {
             x: 94,
             y: 79,
             once: true,
-            sprite: "assets/sprites/question.png",
             actions: [
                 {
                     kind: "playSound",
@@ -1189,11 +1158,6 @@ export const GAME_CONFIG = {
                     kind: "giveItem",
                     itemKey: "super special key2",
                     amount: 1,
-                },
-                {
-                    kind: "openModalText",
-                    title: "Good catch!",
-                    text: "good job on founding the super special key! Now you can go battle the boss!!.",
                 },
             ],
         },
