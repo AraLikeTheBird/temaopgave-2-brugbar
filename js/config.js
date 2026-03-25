@@ -415,6 +415,20 @@ export const GAME_CONFIG = {
     // { kind: "teleport", targetX: 10, targetY: 4 }
     // { kind: "makePassable", passableSprite: null }
     triggers: [
+
+        {id: "startloredump",
+            x:104,
+            y:31,
+            type: "onEnterCell",
+            once: true,
+            actions: [
+                {kind: "openModalText",
+                    title: "Introduction",
+                    text: "In a land not unlike out own, a young hero was sent by his lord on a quest. As the young hero was traveling through the forrest, he came to a clearing in the trees. Here he set up camp there. What the young hero didnt know was that a ring of glowing mushrooms and small standing stones surrounded the clearing and when the young hero woke, he had been transported to a different realm. A realm known as the 'Feywild'"
+                }
+            ]
+        },
+
         //chests
         {id: "looted chest 4",
             type: "onInteractCell",
@@ -744,6 +758,11 @@ export const GAME_CONFIG = {
                     title: "A clue to where you need to go",
                     text: "Try going where there is water, streaming down th mountain",
                 },
+                {
+                    kind: "giveItem",
+                    itemKey: "Clue",
+                    amount: 1
+                }
             ],
         },
         {   id: "mushroom1",
@@ -763,6 +782,7 @@ export const GAME_CONFIG = {
                     title: "Here is a clue!!",
                     text: "What belongs to you, but others use it more than you do?",
                 },
+
             ],
         },
 
@@ -791,6 +811,11 @@ export const GAME_CONFIG = {
                     title: "ARGH! almost dead",
                     text: "Here.. is your clue..." +
                         "I am soft, i am round, in forest floors i am found... What am i??"
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "Clue",
+                    amount: 1
                 }
             ]
         },
@@ -885,12 +910,17 @@ export const GAME_CONFIG = {
             x: 165,
             y: 108,
             isSolid: true,
+            conditions:[{ scope: "items", key: "rapier" + "hammer" + "axe" + "crystal sword", op: ">=", value: 1 }],
             actions: [
-                {
-                    kind: "changeStat",
+                {kind: "changeStat",
                     statKey: "boss_health",
-                    amount: -1,
-                },
+                    amount: -3,}
+            ],
+            elseaction: [ {
+                kind: "changeStat",
+                statKey: "boss_health",
+                amount: -1,
+            },
                 {
                     kind: "openModalText",
                     title: "AHHHH!",
@@ -1087,6 +1117,7 @@ export const GAME_CONFIG = {
             type: "onEnterCell",
             x: 103,
             y: 30,
+            conditions: [{ scope: "items", key: "Clue", op: ">=", value: 5 }],
             actions: [
                 {
                     kind: "playSound",
