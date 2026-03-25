@@ -21,7 +21,7 @@ export const GAME_CONFIG = {
 
     // Player setup.
     player: {
-        startTile: {x: 104, y: 30},
+        startTile: {x: 19, y: 99},
         moveDurationMs: 150,
         defaultFacing: "down",
         spriteSheetSrc: "assets/player/player_sheet.png",
@@ -55,12 +55,14 @@ export const GAME_CONFIG = {
     playerState: {
         items: {
             coin: 0,
+            Clue: 0,
+            weapon: 1
         },
         stats: {
             health: 5,
             strength: 1,
             slug_health: 2,
-            Boss_health: 5,
+            boss_health: 5,
             swamp_health: 2,
         },
     },
@@ -110,7 +112,6 @@ export const GAME_CONFIG = {
         {x1: 101, y1: 30, x2: 101, y2: 29}, //Rocks by portal
         {x1: 102, y1: 29, x2: 108, y2: 29}, //Rocks by portal
         {x1: 108, y1: 30, x2: 109, y2: 31}, //Rocks by portal
-        {x1: 108, y1: 32, x2: 105, y2: 23}, //Rocks by portal
         //Top map
         {x1: 85, y1: 2, x2: 125, y2: 6}, //Trees top mp
         {x1: 79, y1: 3, x2: 85, y2: 7}, //Trees by houses (left up)
@@ -479,7 +480,7 @@ export const GAME_CONFIG = {
                 },
                 {
                     kind: "giveItem",
-                    itemKey: "Crystal Sword",
+                    itemKey: "weapon",
                     amount: 1,
                 },
             ]
@@ -529,7 +530,7 @@ export const GAME_CONFIG = {
                 },
                 {
                     kind: "giveItem",
-                    itemKey: "Axe",
+                    itemKey: "weapon",
                     amount: 1,
                 },
             ]
@@ -579,7 +580,7 @@ export const GAME_CONFIG = {
                 },
                 {
                     kind: "giveItem",
-                    itemKey: "Hammer",
+                    itemKey: "weapon",
                     amount: 1,
                 },
 
@@ -632,7 +633,7 @@ export const GAME_CONFIG = {
                 },
                 {
                     kind: "giveItem",
-                    itemKey: "Rapier",
+                    itemKey: "weapon",
                     amount: 1,
                 },
 
@@ -707,22 +708,31 @@ export const GAME_CONFIG = {
             type: "onEnterCell",
             x: 96,
             y: 80,
+            sprite:
+                {
+                    src: "assets/sprites/question.png",
+                },
             conditions: [
-                { scope: "stats", key: "clue", op: "=", value: 5}
+                { scope: "stats", key: "Clue", op: "===", value: 4}
             ],
             actions: [
-                {
-                   kind: "giveItem",
-                    itemKey: "super special key2",
-                    amount: 1,
-                },
                 {
                     kind: "openModalText",
                     title: "Good catch!",
                     text: "good job on founding the super special key! Now you can go battle the boss!!." +
-                        "Take the key and go back to where you started."
+                        " Take the key and go back to where you started."
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "super_special_key1",
+                    amount: 1,
                 },
             ],
+            elseAction: {
+                kind: "openModalText",
+                title: "sorry",
+                text: "I cant help you, you dont have enough clues..."
+            }
         },
 
         //Frog
@@ -934,92 +944,29 @@ export const GAME_CONFIG = {
             x: 165,
             y: 108,
             isSolid: true,
-            conditions: [{scope: "items", key: "rapier"||"hammer"||"axe"||"crystal sword", op: ">=", value: 1}],
+            conditions: [{scope: "items", key: "weapon", op: ">=", value: 1}],
             actions: [
                 {
                     kind: "changeStat",
                     statKey: "boss_health",
-                    amount: -3,
+                    amount: -2,
                 },
                 {
                   kind: "changeStat",
                     statKey: "health",
                     amount: -1
-                }
-            ],
-            elseaction: [{
-                kind: "changeStat",
-                statKey: "boss_health",
-                amount: -1,
-            },
-                {
-                    kind: "openModalText",
-                    title: "AHHHH!",
-                    text: "Ooh that looked like it hurts",
-                }
-            ]
-        },
-        {
-            id: "bbg1",
-            type: "onInteractCell",
-            x: 166,
-            y: 108,
-            isSolid: true,
-            conditions: [{scope: "items", key: "rapier" || "hammer" || "axe" || "crystal sword", op: ">=", value: 1}],
-            actions: [
-                {
-                    kind: "changeStat",
-                    statKey: "boss_health",
-                    amount: -3,
                 },
                 {
-                    kind: "changeStat",
-                    statKey: "health",
-                    amount: -1
-                }
-            ],
-            elseaction: [{
-                kind: "changeStat",
-                statKey: "boss_health",
-                amount: -1,
-            },
-                {
                     kind: "openModalText",
                     title: "AHHHH!",
                     text: "Ooh that looked like it hurts",
                 }
-            ]
-        },
-        {
-            id: "bbg3",
-            type: "onInteractCell",
-            x: 167,
-            y: 109,
-            isSolid: true,
-            conditions: [{scope: "items", key: "rapier" || "hammer" || "axe" || "crystal sword", op: ">=", value: 1}],
-            actions: [
-                {
-                    kind: "changeStat",
-                    statKey: "boss_health",
-                    amount: -3,
-                },
-                {
-                    kind: "changeStat",
-                    statKey: "health",
-                    amount: -1
-                }
             ],
-            elseaction: [{
+            elseAction: {
                 kind: "changeStat",
-                statKey: "boss_health",
-                amount: -1,
+                statKey: "health",
+                amount: -3,
             },
-                {
-                    kind: "openModalText",
-                    title: "AHHHH!",
-                    text: "Ooh that looked like it hurts",
-                }
-            ]
         },
         {
             id: "bbg_dead",
@@ -1027,7 +974,7 @@ export const GAME_CONFIG = {
             x: 165,
             y: 108,
             conditions: [
-                {scope: "stats", key: "boss_health", op: "<=", value: 0}
+                {scope: "stats", key: "boss_health", op: "===", value: -1}
             ],
             actions: [
                 {
@@ -1048,66 +995,16 @@ export const GAME_CONFIG = {
                     kind: "giveItem",
                     itemKey: "FREEDOM!!",
                     amount: 1
-                }
-            ]
-        },
-        {
-            id: "bbg_dead2",
-            type: "onInteractCell",
-            x: 166,
-            y: 108,
-            conditions: [
-                {scope: "stats", key: "boss_health", op: "<=", value: 0}
-            ],
-            actions: [
-                {
-                    kind: "makePassable",
-                    passableSprite: null,
                 },
                 {
-                    kind: "changeStat",
-                    statKey: "health",
-                    amount: -1
+                    kind: "playSound",
+                    soundKey: "teleport",
                 },
                 {
-                    kind: "openModalText",
-                    title: "VICTORY!!",
-                    text: "You did it, you defeated the boss... You can go now, leave this realm to its inhabitants, I'm sure someone is waiting for you at home"
-                },
-                {
-                    kind: "giveItem",
-                    itemKey: "FREEDOM!!",
-                    amount: 1
-                }
-            ]
-        },
-        {
-            id: "bbg_dead3",
-            type: "onInteractCell",
-            x: 167,
-            y: 109,
-            conditions: [
-                {scope: "stats", key: "boss_health", op: "<=", value: 0}
-            ],
-            actions: [
-                {
-                    kind: "makePassable",
-                    passableSprite: null,
-                },
-                {
-                    kind: "changeStat",
-                    statKey: "health",
-                    amount: -1
-                },
-                {
-                    kind: "openModalText",
-                    title: "VICTORY!!",
-                    text: "You did it, you defeated the boss... You can go now, leave this realm to its inhabitants, I'm sure someone is waiting for you at home"
-                },
-                {
-                    kind: "giveItem",
-                    itemKey: "FREEDOM!!",
-                    amount: 1
+                    kind: "teleport",
+                    targetX: 104,
+                    targetY: 30,
+                    sfx: "teleport",
                 }
             ]
         },
@@ -1144,7 +1041,7 @@ export const GAME_CONFIG = {
 
         //key and jump
         {
-            id: "super special key1",
+            id: "super_special_key1",
             type: "onInteractCell",
             x: 94,
             y: 79,
@@ -1156,7 +1053,7 @@ export const GAME_CONFIG = {
                 },
                 {
                     kind: "giveItem",
-                    itemKey: "super special key2",
+                    itemKey: "super_special_key2",
                     amount: 1,
                 },
             ],
