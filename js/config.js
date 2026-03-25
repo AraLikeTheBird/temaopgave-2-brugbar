@@ -60,6 +60,7 @@ export const GAME_CONFIG = {
             health: 5,
             strength: 1,
             slug_health: 2,
+            Boss_health: 15,
         },
     },
 
@@ -934,12 +935,17 @@ export const GAME_CONFIG = {
             x: 166,
             y: 108,
             isSolid: true,
+            conditions:[{ scope: "items", key: "rapier" + "hammer" + "axe" + "crystal sword", op: ">=", value: 1 }],
             actions: [
-                {
-                    kind: "changeStat",
+                {kind: "changeStat",
                     statKey: "boss_health",
-                    amount: -1,
-                },
+                    amount: -3,}
+            ],
+            elseaction: [ {
+                kind: "changeStat",
+                statKey: "boss_health",
+                amount: -1,
+            },
                 {
                     kind: "openModalText",
                     title: "AHHHH!",
@@ -953,12 +959,17 @@ export const GAME_CONFIG = {
             x: 167,
             y: 109,
             isSolid: true,
+            conditions:[{ scope: "items", key: "rapier" + "hammer" + "axe" + "crystal sword", op: ">=", value: 1 }],
             actions: [
-                {
-                    kind: "changeStat",
+                {kind: "changeStat",
                     statKey: "boss_health",
-                    amount: -1,
-                },
+                    amount: -3,}
+            ],
+            elseaction: [ {
+                kind: "changeStat",
+                statKey: "boss_health",
+                amount: -1,
+            },
                 {
                     kind: "openModalText",
                     title: "AHHHH!",
