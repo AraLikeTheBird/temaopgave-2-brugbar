@@ -21,7 +21,7 @@ export const GAME_CONFIG = {
 
     // Player setup.
     player: {
-        startTile: {x: 104, y: 30},
+        startTile: {x: 153, y: 115},
         moveDurationMs: 150,
         defaultFacing: "down",
         spriteSheetSrc: "assets/player/player_sheet.png",
@@ -700,7 +700,6 @@ export const GAME_CONFIG = {
             ]
         },
 
-
         //tree
         {
             id: "tree",
@@ -859,7 +858,7 @@ export const GAME_CONFIG = {
         },
         {
             id: "swamp-girl2",
-            type: "onEnterCell",
+            type: "onInteractCell",
             x: 19,
             y: 35,
             once: true,
@@ -913,6 +912,7 @@ export const GAME_CONFIG = {
             type: "onInteractCell",
             x: 168,
             y: 65,
+            once: true
             sprite: "assets/sprites/slugsheet.png",
             conditions: [
                 {scope: "stats", key: "slug_health", op: "<=", value: 0}
@@ -949,7 +949,7 @@ export const GAME_CONFIG = {
             x: 165,
             y: 108,
             isSolid: true,
-            conditions: [{scope: "items", key: "rapier" + "hammer" + "axe" + "crystal sword", op: ">=", value: 1}],
+            conditions: [{scope: "items", key: "rapier"||"hammer"||"axe"||"crystal sword", op: ">=", value: 1}],
             actions: [
                 {
                     kind: "changeStat",
@@ -980,7 +980,7 @@ export const GAME_CONFIG = {
             x: 166,
             y: 108,
             isSolid: true,
-            conditions: [{scope: "items", key: "rapier" + "hammer" + "axe" + "crystal sword", op: ">=", value: 1}],
+            conditions: [{scope: "items", key: "rapier" || "hammer" || "axe" || "crystal sword", op: ">=", value: 1}],
             actions: [
                 {
                     kind: "changeStat",
@@ -1011,7 +1011,7 @@ export const GAME_CONFIG = {
             x: 167,
             y: 109,
             isSolid: true,
-            conditions: [{scope: "items", key: "rapier" + "hammer" + "axe" + "crystal sword", op: ">=", value: 1}],
+            conditions: [{scope: "items", key: "rapier" || "hammer" || "axe" || "crystal sword", op: ">=", value: 1}],
             actions: [
                 {
                     kind: "changeStat",
