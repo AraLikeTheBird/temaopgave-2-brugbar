@@ -835,7 +835,7 @@ export const GAME_CONFIG = {
             x: 19,
             y: 35,
             conditions: [
-                {scope: "stats", key: "Swamp_health", op: "<=", value: 2},
+                {scope: "stats", key: "Swamp_health", op: "<=", value: 0},
             ],
             isSolid: true,
             sprite: {
