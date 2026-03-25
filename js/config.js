@@ -830,43 +830,13 @@ export const GAME_CONFIG = {
 
         //swamp girl
         {
-            id: "Swamp-girl dead1",
-            type: "onInteractCell",
-            x: 19,
-            y: 35,
-            isSolid: true,
-            conditions: [
-                {scope: "stats", key: "Swamp_health", op: "<=", value: 0},
-            ],
-            actions: [
-                {
-                    kind: "makePassable",
-                    passableSprite: null,
-                },
-                {
-                    kind: "changeStat",
-                    statKey: "health",
-                    amount: -1
-                },
-                {
-                    kind: "openModalText",
-                    title: "ARGH! almost dead",
-                    text: "Here.. is your clue..." +
-                        "I am soft, i am round, in forest floors i am found... What am i??"
-                },
-                {
-                    kind: "giveItem",
-                    itemKey: "Clue",
-                    amount: 1
-                },
-            ],
-        },
-        {
             id: "swamp-girl2",
             type: "onInteractCell",
             x: 19,
             y: 35,
-            once: true,
+            conditions: [
+                {scope: "stats", key: "Swamp_health", op: "<=", value: 2},
+            ],
             isSolid: true,
             sprite: {
                 src: "assets/sprites/npc-girl-sheet.png",
@@ -883,7 +853,13 @@ export const GAME_CONFIG = {
                 {
                     kind: "openModalText",
                     title: "ouchy!",
-                    text: "Hit it on the head",
+                    text: " Here.. is your clue..." +
+                        "I am soft, i am round, in forest floors i am found... What am i??"
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "Clue",
+                    amount: 1
                 },
             ],
         },
@@ -943,8 +919,8 @@ export const GAME_CONFIG = {
                     kind: "giveItem",
                     itemKey: "Clue",
                     amount: 1
-                }
-            ]
+                },
+            ],
         },
 
         //boss
