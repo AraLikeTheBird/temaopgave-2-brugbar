@@ -714,6 +714,10 @@ export const GAME_CONFIG = {
                     title: "Hello there little friend",
                     text: "Take the key and go back to where you started.",
                 },
+                {kind: "giveItem",
+                    itemKey: "Clue",
+                    amount: 1
+                }
             ]
         },
 
