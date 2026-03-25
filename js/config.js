@@ -798,7 +798,7 @@ export const GAME_CONFIG = {
                     kind: "giveItem",
                     itemKey: "Clue",
                     amount: 1
-                }
+                },
             ],
         },
         {
