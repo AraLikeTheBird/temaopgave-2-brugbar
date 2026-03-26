@@ -1509,6 +1509,6 @@ export const GAME_CONFIG = {
                 },
             ],
         },
-
+revert test
     ],
 };
