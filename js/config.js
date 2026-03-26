@@ -55,12 +55,14 @@ export const GAME_CONFIG = {
     playerState: {
         items: {
             coin: 0,
+            clue: 4,
+            weapon: 0
         },
         stats: {
             health: 5,
             strength: 1,
             slug_health: 2,
-            Boss_health: 5,
+            boss_health: 5,
             swamp_health: 2,
         },
     },
@@ -430,10 +432,6 @@ export const GAME_CONFIG = {
                     kind: "openModalText",
                     title: "Introduction",
                     text: "In a land not unlike our own, a young hero was sent by his lord on a quest. As the young hero was traveling through the forrest, he came to a clearing in the trees. Here he set up camp there. What the young hero didnt know was that a ring of glowing mushrooms and small standing stones surrounded the clearing and when the young hero woke, he had been transported to a different realm. A realm known as the 'Feywild', if he wants to complete his lords quest he must escape the Feywild. To do this he must seek the mushroom girl in town who will help him find his way to the tyrant ruling this realm and escape",
-                },
-                {
-                    kind: "playSound",
-                    soundKey: "bgmusic"
                 }
             ]
         },
@@ -485,6 +483,7 @@ export const GAME_CONFIG = {
                 {
                     kind: "giveItem",
                     itemKey: "Crystal Sword",
+                    itemKey: "weapon",
                     amount: 1,
                 },
             ]
@@ -535,6 +534,7 @@ export const GAME_CONFIG = {
                 {
                     kind: "giveItem",
                     itemKey: "Axe",
+                    itemKey: "weapon",
                     amount: 1,
                 },
             ]
@@ -585,6 +585,7 @@ export const GAME_CONFIG = {
                 {
                     kind: "giveItem",
                     itemKey: "Hammer",
+                    itemKey: "weapon",
                     amount: 1,
                 },
 
@@ -638,6 +639,7 @@ export const GAME_CONFIG = {
                 {
                     kind: "giveItem",
                     itemKey: "Rapier",
+                    itemKey: "weapon",
                     amount: 1,
                 },
 
@@ -720,12 +722,25 @@ export const GAME_CONFIG = {
                     kind: "openModalText",
                     title: "Hello there little friend",
                     text: "Take the key and go back to where you started.",
+                    kind: "openModalText",
+                    title: "Crystal Falls this way",
+                    text: "Follow the water.. obviously",
                 },
+            ]
+        },
+        {
+            id: "forest_sign",
+            type: "onInteractCell",
+            x: 98,
+            y: 57,
+            isSolid: true,
+            sprite: "assets/sprites/sign 3.png",
+            actions: [
                 {
-                    kind: "giveItem",
-                    itemKey: "Clue",
-                    amount: 1
-                }
+                    kind: "openModalText",
+                    title: "Mushroom Grove this way",
+                    text: "Follow the road over the bridge.",
+                },
             ]
         },
 
@@ -733,6 +748,8 @@ export const GAME_CONFIG = {
         {
             id: "frog 2",
             type: "onInteractCell",
+            x: 82,
+            y: 41,
             isSolid: true,
             x: 165,
             y: 10,
@@ -909,19 +926,22 @@ export const GAME_CONFIG = {
                 frames: 4,
                 speed: 350,
             },
+            id: "tree_sign",
+            type: "onInteractCell",
+            x: 94,
+            y: 57,
+            isSolid: true,
+            sprite: "assets/sprites/sign 2.png",
             actions: [
                 {
-                    kind: "changeStat",
-                    statKey: "slug_health",
-                    amount: -1,
-                },
-                {
                     kind: "openModalText",
-                    title: "AHHHH!",
-                    text: "Hit it in the mushrooms!",
-                }
+                    title: "This way is a dead end",
+                    text: "Follow the road.",
+                },
             ]
         },
+
+        //tree
         {
             id: "slug_dead",
             type: "onInteractCell",
@@ -933,33 +953,51 @@ export const GAME_CONFIG = {
                 {scope: "stats", key: "slug_health", op: "<=", value: 0}
             ],
             actions: [
+            id: "tree",
+            type: "onEnterCell",
+            x: 96,
+            y: 80,
+            sprite:
                 {
-                    kind: "makePassable",
-                    passableSprite: null,
+                    src: "assets/sprites/question.png",
                 },
-                {
-                    kind: "changeStat",
-                    statKey: "health",
-                    amount: -1
-                },
+            conditions: [{
+                scope: "items",
+                key: "clue",
+                op: "===",
+                value: 4
+            } ],
+            actions: [
                 {
                     kind: "openModalText",
-                    title: "Close to death... Defeated!!",
-                    text: "Here.. is your clue..." +
-                        "I stand tall and mighty, yet i never walk. I give shade and fruits but never talk.." +
-                        "What am i?"
+                    title: "Good catch!",
+                    text: "good job on founding the super special key! Now you can go battle the boss!!." +
+                        " Take the key and go back to where you started."
                 },
                 {
                     kind: "giveItem",
-                    itemKey: "Clue",
-                    amount: 1
-                }
-            ]
+                    itemKey: "super_special_key1",
+                    amount: 1,
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "clue",
+                    amount: 1,
+                },
+            ],
+            elseAction: {
+                kind: "openModalText",
+                title: "sorry",
+                text: "I cant help you, you dont have enough clues..."
+            }
         },
 
         //boss
         {
             id: "bbg",
+        //Frog
+        {
+            id: "frog 2",
             type: "onInteractCell",
             x: 165,
             y: 108,
@@ -1073,6 +1111,199 @@ export const GAME_CONFIG = {
                     kind: "openModalText",
                     title: "VICTORY!!",
                     text: "You did it, you defeated the boss... You can go now, leave this realm to its inhabitants, I'm sure someone is waiting for you at home"
+            x: 165,
+            y: 10,
+            sprite:
+                {
+                    src: "assets/sprites/frognpc.png",
+                    frames: 4,
+                    speed: 350,
+                    tilesize: 32,
+                },
+            actions: [
+                {
+                    kind: "openModalText",
+                    title: "Reed Hoppington",
+                    text: "I already gave you the note... please stop interrupting my fishing"
+                }
+            ]
+        },
+        {
+            id: "frog",
+            type: "onInteractCell",
+            isSolid: true,
+            once: true,
+            x: 165,
+            y: 10,
+            sprite: {
+                src: "assets/sprites/frognpc.png",
+                frames: 4,
+                speed: 350,
+                tilesize: 32,
+            },
+            actions: [
+                {
+                    kind: "giveItem",
+                    itemKey: "clue",
+                    amount: 1
+                },
+                {
+                    kind: "playSound",
+                    soundKey: "pickup"
+                },
+                {
+                    kind: "openModalText",
+                    title: "Reed Hoppington",
+                    text: "Hi I didnt see you there... Oh you want to get out of this realm? I found this note that might be of help. It says 'We stand in the water on many legs yet our limbs stay dry. We do not travel far for the land comes to us. What are we?' I haven't got a clue what that means, but maybe you can use it for something. ",
+                },
+
+            ]
+        },
+
+        //Mushroom girl
+        {
+            id: "mushroom2",
+            type: "onInteractCell",
+            x: 116,
+            y: 24,
+            isSolid: true,
+            sprite: {
+                src: "assets/sprites/npc-mushroom-sheet.png",
+                frames: 4,
+                speed: 350,
+                tileSize: 32,
+            },
+            actions: [
+                {
+                    kind: "openModalText",
+                    title: "A clue to where you need to go",
+                    text: "Try going where there is water, streaming down the mountain.",
+                },
+            ],
+        },
+        {
+            id: "mushroom1",
+            type: "onInteractCell",
+            x: 116,
+            y: 24,
+            once: true,
+            isSolid: true,
+            sprite: {
+                src: "assets/sprites/npc-mushroom-sheet.png",
+                frames: 4,
+                speed: 350,
+                tileSize: 32,
+            },
+            actions: [
+                {
+                    kind: "openModalText",
+                    title: "Here is a clue!!",
+                    text: "What belongs to you, but others use it more than you do?",
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "clue",
+                    amount: 1
+                },
+
+            ],
+        },
+
+        //swamp girl
+        {
+            id: "swamp-girl2",
+            type: "onInteractCell",
+            x: 19,
+            y: 35,
+            once: true,
+            conditions: [
+                {scope: "stats", key: "Swamp_health", op: "<=", value: 0},
+            ],
+            isSolid: true,
+            sprite: {
+                src: "assets/sprites/npc-girl-sheet.png",
+                frames: 4,
+                speed: 350,
+                tileSize: 32
+            },
+            actions: [
+                {
+                    kind: "changeStat",
+                    statKey: "swamp_health",
+                    amount: -1,
+                },
+                {
+                    kind: "openModalText",
+                    title: "ouchy!",
+                    text: " Here.. is your clue..." +
+                        "I am soft, i am round, in forest floors i am found... What am i??"
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "clue",
+                    amount: 1
+                },
+            ],
+        },
+
+        //slug
+        {
+            id: "slug",
+            type: "onInteractCell",
+            x: 168,
+            y: 65,
+            isSolid: true,
+
+            sprite: {
+                src: "assets/sprites/slugsheet.png",
+                frames: 4,
+                speed: 350,
+            },
+            actions: [
+                {
+                    kind: "changeStat",
+                    statKey: "slug_health",
+                    amount: -1,
+                },
+                {
+                    kind: "openModalText",
+                    title: "AHHHH!",
+                    text: "Hit it in the mushrooms!",
+                }
+            ]
+        },
+        {
+            id: "slug_dead",
+            type: "onInteractCell",
+            x: 168,
+            y: 65,
+            isSolid: true,
+            once: true,
+            sprite: "assets/sprites/slugsheet.png",
+            conditions: [
+                {scope: "stats", key: "slug_health", op: "<=", value: 0}
+            ],
+            actions: [
+                {
+                    kind: "makePassable",
+                    passableSprite: null,
+                },
+                {
+                    kind: "changeStat",
+                    statKey: "health",
+                    amount: -1
+                },
+                {
+                    kind: "openModalText",
+                    title: "Close to death... Defeated!!",
+                    text: "Here.. is your clue..." +
+                        "I stand tall and mighty, yet i never walk. I give shade and fruits but never talk.." +
+                        "What am i?"
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "clue",
+                    amount: 1
                 },
                 {
                     kind: "giveItem",
@@ -1081,6 +1312,8 @@ export const GAME_CONFIG = {
                 }
             ]
         },
+
+        //boss
         {
             id: "bbg_dead2",
             type: "onInteractCell",
@@ -1093,6 +1326,17 @@ export const GAME_CONFIG = {
                 {
                     kind: "makePassable",
                     passableSprite: null,
+            id: "bbg",
+            type: "onInteractCell",
+            x: 165,
+            y: 108,
+            isSolid: true,
+            conditions: [{scope: "items", key: "weapon", op: ">=", value: 1}],
+            actions: [
+                {
+                    kind: "changeStat",
+                    statKey: "boss_health",
+                    amount: -2,
                 },
                 {
                     kind: "changeStat",
@@ -1118,6 +1362,23 @@ export const GAME_CONFIG = {
             y: 109,
             conditions: [
                 {scope: "stats", key: "boss_health", op: "<=", value: 0}
+                    title: "AHHHH!",
+                    text: "Ooh that looked like it hurts",
+                }
+            ],
+            elseAction: {
+                kind: "changeStat",
+                statKey: "health",
+                amount: -3,
+            },
+        },
+        {
+            id: "bbg_dead",
+            type: "onInteractCell",
+            x: 165,
+            y: 108,
+            conditions: [
+                {scope: "stats", key: "boss_health", op: "===", value: -1}
             ],
             actions: [
                 {
@@ -1138,6 +1399,31 @@ export const GAME_CONFIG = {
                     kind: "giveItem",
                     itemKey: "FREEDOM!!",
                     amount: 1
+                },
+                {
+                    kind: "changeStat",
+                    statKey: "health",
+                    amount: -1
+                },
+                {
+                    kind: "openModalText",
+                    title: "VICTORY!!",
+                    text: "You did it, you defeated the boss... You can go now, leave this realm to its inhabitants, I'm sure someone is waiting for you at home"
+                },
+                {
+                    kind: "giveItem",
+                    itemKey: "FREEDOM!!",
+                    amount: 1
+                },
+                {
+                    kind: "playSound",
+                    soundKey: "teleport",
+                },
+                {
+                    kind: "teleport",
+                    targetX: 104,
+                    targetY: 30,
+                    sfx: "teleport",
                 }
             ]
         },
@@ -1175,6 +1461,7 @@ export const GAME_CONFIG = {
         //key and jump
         {
             id: "super special key1",
+            id: "super_special_key1",
             type: "onInteractCell",
             x: 94,
             y: 79,
@@ -1195,6 +1482,11 @@ export const GAME_CONFIG = {
                     title: "Good catch!",
                     text: "good job on founding the super special key! Now you can go battle the boss!!.",
                 },
+                {
+                    kind: "giveItem",
+                    itemKey: "super_special_key2",
+                    amount: 1,
+                },
             ],
         },
         {
@@ -1203,6 +1495,7 @@ export const GAME_CONFIG = {
             x: 103,
             y: 30,
             conditions: [{scope: "items", key: "Clue", op: ">=", value: 5}],
+            conditions: [{scope: "items", key: "clue", op: ">=", value: 5}],
             actions: [
                 {
                     kind: "playSound",
