@@ -429,7 +429,8 @@ export const GAME_CONFIG = {
                     kind: "openModalText",
                     title: "Introduction",
                     text: "In a land not unlike our own, a young hero was sent by his lord on a quest. As the young hero was traveling through the forrest, he came to a clearing in the trees. Here he set up camp there. What the young hero didnt know was that a ring of glowing mushrooms and small standing stones surrounded the clearing and when the young hero woke, he had been transported to a different realm. A realm known as the 'Feywild', if he wants to complete his lords quest he must escape the Feywild. To do this he must seek the mushroom girl in town who will help him find his way to the tyrant ruling this realm and escape",
-                }
+                },
+
             ]
         },
 
